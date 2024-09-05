@@ -1,0 +1,176 @@
+
+ul {
+  list-style-type: none;
+  margin: 0 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #333;
+  padding: 0%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ec970e;
+  color:aliceblue;
+}
+div{
+  display: block;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+.search-container{
+  margin-right: 250px;
+}
+.topnav .search-container {
+  float: right;
+}
+
+.search-input[type=text] {
+  padding: 12px;
+  margin-top: 0;
+  font-size: 17px;
+  border: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 500px;
+  height: 19px;
+  padding-top: 15px;
+  border: solid;
+  border-color:#d0cfcf;
+  border-width: 2px;
+}
+
+.topnav .search-container {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 15px;
+  cursor: pointer;
+}
+.search-button{
+  cursor: pointer;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+  padding: 14px;
+  border: none;
+  background-color: #ec970e;
+}
+
+.search-button:hover {
+  background-color: #e9a73e
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+i {
+  color:aliceblue;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+.header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.bar-principal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url("./img/moto4.png");
+}
+.RPM {
+  color: #ec970e;
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  text-shadow: 4px 4px rgb(101, 100, 95);
+  font-size: 80px;
+  margin-left: 250px;
+  padding-top: 30px;
+}
+.moto-rep{
+  color:aliceblue;
+  margin-top: 5px;
+  margin-bottom: 40px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 250px;
+  text-shadow: 1px 1px rgb(133, 132, 129);
+}
+.categories{
+  display: flex;
+  background-color: #333;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+.dropdown-content {
+  display: none;
+  position:fixed;
+  margin-top: 60px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content li {
+  list-style-type: none;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: #ec970e;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+

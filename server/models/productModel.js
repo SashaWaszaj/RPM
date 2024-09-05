@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-import categorySchema from "./categoryModel";
+const { categorySchema } = require('./categoryModel');
 
 const productSchema = mongoose.Schema({
     code: {
@@ -14,10 +14,16 @@ const productSchema = mongoose.Schema({
         type: String,
         required: [false]
     },
-    category: { categorySchema }
-      
+    image: {
+        type: String,
+        required: [false],
+    },
+    category: {
+        type: String,
+        required: [true, 'Please select a category.']
+    }
 });
 
-const Product = mongoose.model ("Product", productSchema);
+const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
