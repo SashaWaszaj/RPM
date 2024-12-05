@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate} from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({ setSelectedCategory }) => {
+
+    const navigate = useNavigate();
+
+    const handleCategoryClick = (category) => {
+        setSelectedCategory(category);
+        navigate(`/product/${category}`);
+    };
 
     return (
         <header className='header'>
@@ -20,128 +27,113 @@ const NavBar = () => {
             <div className='categories'>
                 <ul>
                     <div className='dropdown'>
-                        <li><a className="category-box" href="#nosotros"><i className="fa fa-home"></i>  Nosotros ⌵</a></li>
+                        <li><a className="category-box">Motor ⌵</a></li>
                             <div className="dropdown-content">
-                                <a >La empresa</a>
-                                <a >Contacto</a>
+                                <a onClick={() => handleCategoryClick("Pistones")}>Pistones</a>
+                                <a onClick={() => handleCategoryClick("Cilindros")}>Cilindros</a>
+                                <a onClick={() => handleCategoryClick("Juntas")}>Juntas</a>
+                                <a onClick={() => handleCategoryClick("Cigüeñal")}>Cigüeñal</a>
+                                <a onClick={() => handleCategoryClick("Bielas")}>Bielas</a>
+                                <a onClick={() => handleCategoryClick("Cadenas-de-distribución")}>Cadenas de distribución</a>
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box" href="#motor">Motor ⌵ </a></li>
+                        <li><a className="category-box">Transmisión ⌵</a></li>
                             <div className="dropdown-content">
-                                <a >Pistones</a>
-                                <a >Cilindros</a>
-                                <a >Juntas</a>
-                                <a >Cigüeñal</a>
-                                <a >Bielas</a>
-                                <a >Cadenas de distribución</a>
-                                <a >Culatas</a>
-                                <a >Carburadores</a>
-                                <a >Motor varios</a>
+                                <a onClick={() => handleCategoryClick("Cajas-de-cambio")}>Cajas de cambio</a>
+                                <a onClick={() => handleCategoryClick("Embragues")}>Embragues</a>
+                                <a onClick={() => handleCategoryClick("Cadenas-y-Correas")}>Cadenas y Correas</a>
+                                <a onClick={() => handleCategoryClick("Piñones")}>Piñones</a>
+                                <a onClick={() => handleCategoryClick("Ejes-de-transmisión")}>Ejes de transmisión</a>
+                                <a onClick={() => handleCategoryClick("Poleas")}>Poleas</a>
+                                <a onClick={() => handleCategoryClick("Rodamientos")}>Rodamientos</a>
+                                <a onClick={() => handleCategoryClick("Transmision-varios")}>Transmision varios</a>
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box" href="#transmision">Transmisión ⌵</a></li>
+                        <li><a className="category-box">Suspensión y Direccion ⌵</a></li>
                             <div className="dropdown-content">
-                                <a >Cajas de cambio</a>
-                                <a >Embragues</a>
-                                <a >Cadenas y Correas</a>
-                                <a >Piñones</a>
-                                <a >Ejes de transmisión</a>
-                                <a >Poleas</a>
-                                <a >Rodamientos</a>
-                                <a >Transmision varios</a>
+                                <a onClick={() => handleCategoryClick("Amortiguadores")}>Amortiguadores</a>
+                                <a onClick={() => handleCategoryClick("Horquillas")}>Horquillas</a>
+                                <a onClick={() => handleCategoryClick("Resortes")}>Resortes</a>
+                                <a onClick={() => handleCategoryClick("Manillares")}>Manillares</a>
+                                <a onClick={() => handleCategoryClick("Rodamientos-de-dirección")}>Rodamientos de dirección</a>
+                                <a onClick={() => handleCategoryClick("Suspension-y-direccion-varios")}>Suspension y direccion varios</a>
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box" href="#suspension-y-direccion">Suspensión y Direccion ⌵</a></li>
+                        <li><a className="category-box">Frenos ⌵</a></li>
                             <div className="dropdown-content">
-                                <a >Amortiguadores</a>
-                                <a >Horquillas</a>
-                                <a >Resortes</a>
-                                <a >Kit de rebote</a>
-                                <a >Tijas</a>
-                                <a >Manillares</a>
-                                <a >Rodamientos de dirección</a>
-                                <a >Suspension y direccion varios</a>
+                                <a onClick={() => handleCategoryClick("Pastillas-de-freno")}>Pastillas de freno</a>
+                                <a onClick={() => handleCategoryClick("Discos-de-freno")}>Discos de freno</a>
+                                <a onClick={() => handleCategoryClick("Cilindros-maestros")}>Cilindros maestros</a>
+                                <a onClick={() => handleCategoryClick("Zapatas")}>Zapatas</a>
+                                <a onClick={() => handleCategoryClick("Accesorios-de-freno")}>Accesorios de freno</a>
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box" href="#frenos">Frenos ⌵</a></li>
+                        <li><a className="category-box">Ruedas y Neumáticos ⌵</a></li>
                             <div className="dropdown-content">
-                                <a >Pastillas de freno</a>
-                                <a >Discos de freno</a>
-                                <a >Pinzas</a>
-                                <a >Cilindros maestros</a>
-                                <a >Líneas de freno</a>
-                                <a >Pinzas</a>
-                                <a >Zapatas</a>
-                                <a >Accesorios de freno</a>
+                                <a onClick={() => handleCategoryClick("Neumáticos")}>Neumáticos</a>
+                                <a onClick={() => handleCategoryClick("Llantas")}>Llantas</a>
+                                <a onClick={() => handleCategoryClick("Cámaras-de-aire")}>Cámaras de aire</a>
+                                <a onClick={() => handleCategoryClick("Válvulas")}>Válvulas</a>
+                                <a onClick={() => handleCategoryClick("Rayos-y-Niples")}>Rayos y Niples</a>
+                                <a onClick={() => handleCategoryClick("Accesorios-de-rueda")}>Accesorios de rueda</a>
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box" href="#ruedas-y-neumaticos">Ruedas y Neumáticos ⌵</a></li>
+                        <li><a className="category-box">Escape ⌵</a></li>
                             <div className="dropdown-content">
-                                <a >Neumáticos</a>
-                                <a >Llantas</a>
-                                <a >Cámaras de aire</a>
-                                <a >Válvulas</a>
-                                <a >Rayos y Niples</a>
-                                <a >Otros accesorios de rueda</a>
+                                <a onClick={() => handleCategoryClick("Silenciadores")}>Silenciadores</a>
+                                <a onClick={() => handleCategoryClick("Colectores")}>Colectores</a>
+                                <a onClick={() => handleCategoryClick("Tuberías")}>Tuberías</a>
+                                <a onClick={() => handleCategoryClick("Escape-varios")}>Escape varios</a>
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box" href="#Escape">Escape ⌵</a></li>
+                        <li><a className="category-box">Accesorios y Carrocería ⌵</a></li>
                             <div className="dropdown-content">
-                                <a >Silenciadores</a>
-                                <a >Colectores</a>
-                                <a >Tuberías</a>
-                                <a >Escape varios</a>
+                                <a onClick={() => handleCategoryClick("Carcasas")}>Carcasas</a>
+                                <a onClick={() => handleCategoryClick("Guardabarros")}>Guardabarros</a>
+                                <a onClick={() => handleCategoryClick("Tanques-de-gasolina")}>Tanques de gasolina</a>
+                                <a onClick={() => handleCategoryClick("Cubiertas-laterales")}>Cubiertas laterales</a>
+                                <a onClick={() => handleCategoryClick("Baúles")}>Baúles</a>
+                                <a onClick={() => handleCategoryClick("Asientos")}>Asientos</a>
+                                <a onClick={() => handleCategoryClick("Cascos")}>Cascos</a>
+                                <a onClick={() => handleCategoryClick("Accesorios-varios")}>Accesorios varios</a>
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box" href="#accesorios-y-carrocería">Accesorios y Carrocería ⌵</a></li>
+                        <li><a className="category-box">Iluminación y electrónica ⌵</a></li>
                             <div className="dropdown-content">
-                                <a >Carcasas</a>
-                                <a >Guardabarros</a>
-                                <a >Tanques de gasolina</a>
-                                <a >Cubiertas laterales</a>
-                                <a >Baúles</a>
-                                <a >Asientos</a>
-                                <a >Cascos</a>
-                                <a >Accesorios varios</a>
+                                <a onClick={() => handleCategoryClick("Baterías")}>Baterías</a>
+                                <a onClick={() => handleCategoryClick("Alarmas")}>Alarmas</a>
+                                <a onClick={() => handleCategoryClick("GPS")}>GPS</a>
+                                <a onClick={() => handleCategoryClick("Faros")}>Faros</a>
+                                <a onClick={() => handleCategoryClick("Luces-traseras")}>Luces traseras</a>
+                                <a onClick={() => handleCategoryClick("Intermitentes")}>Intermitentes</a>
+                                <a onClick={() => handleCategoryClick("Luces-LED")}>Luces LED</a>
+                                <a onClick={() => handleCategoryClick("Iluminacion-varios")}>Iluminacion varios</a>
+                                <a onClick={() => handleCategoryClick("Electronica-varios")}>Electronica varios</a>  
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box" href="#iluminacion">Iluminación y electrónica ⌵</a></li>
+                        <li><a className="category-box">Otros ⌵</a></li>
                             <div className="dropdown-content">
-                                <a >Baterías</a>
-                                <a >Alarmas</a>
-                                <a >GPS</a>
-                                <a >Faros</a>
-                                <a >Luces traseras</a>
-                                <a >Intermitentes</a>
-                                <a >Luces LED</a>
-                                <a >Iluminacion varios</a>
-                                <a >Electronica varios</a>  
-                            </div>
-                    </div>
-                    <div className='dropdown'>
-                        <li><a className="category-box" href="#herramientas-y-mantenimiento">Herramientas y Mantenimiento ⌵</a></li>
-                            <div className="dropdown-content">
-                                <a >Herramientas manuales</a>
-                                <a >Lubricantes y aceites</a>
-                                <a >Limpieza</a>
-                                <a >Filtros</a>
-                                <a >Kits de reparación</a>
-                                <a>Herramientas varias </a>
-                                <a>Mantenimiento varios </a>
+                                <a onClick={() => handleCategoryClick("Herramientas")}>Herramientas</a>
+                                <a onClick={() => handleCategoryClick("Lubricantes-y-aceites")}>Lubricantes y aceites</a>
+                                <a onClick={() => handleCategoryClick("Limpieza")}>Limpieza</a>
+                                <a onClick={() => handleCategoryClick("Filtros")}>Filtros</a>
+                                <a onClick={() => handleCategoryClick("Kits-de-reparación")}>Kits de reparación</a>
+                                <a onClick={() => handleCategoryClick("Bicicletas")}>Bicicletas</a>
                             </div>
                     </div>
                 </ul>
             </div>
         </header>
-    )
-}
+    );
+};
 
 export default NavBar;
+

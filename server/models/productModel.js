@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const { categorySchema } = require('./categoryModel');
 
 const productSchema = mongoose.Schema({
     code: {
         type: Number,
-        required: [true, 'Please insert the code of the product.']
+        required: [true, 'Please insert the code of the product.'],
+        unique: true
     },
     name: {
         type: String,
