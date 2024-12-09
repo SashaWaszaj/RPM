@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import '../CSS Styles/ProductDetails.css';
 
 const ProductDetails = () => {
     const [product, setProduct] = useState(null); // Iniciar el estado del producto como null
@@ -24,20 +25,28 @@ const ProductDetails = () => {
     }, [code]);
 
     return (
-        <div>
-            {error && <div style={{ color: "red" }}>{error}</div>}
-            
-            {/* Mostrar los detalles del producto solo si se ha cargado */}
+        <div className="product-details-container">
+            {error && <div className="error-message">{error}</div>}
             {product ? (
                 <div>
-                    <img src={`http://localhost:8080/uploads/${product.image}`} alt={product.name} />
-                    <h3>{product.name}</h3>
-                    <p>Código: {product.code}</p>
-                    <p>Categoría: {product.category}</p>
-                    <p>Descripción: {product.description}</p>
+                    <div className="product-container">
+                        <div>
+                            <img src={`http://localhost:8080/${product.image}`} alt="Producto" />
+                        </div>
+                        <div className="Product-information-bar">
+                            <h3>{product.name}</h3>
+                            <p>SKU: <span className="SKU-content">{product.code}</span></p>
+                            <p>Categoría: <span>{product.category}</span></p>
+                            <p className="warning">* Precio y Stock sujeto a disponibilidad.</p>
+                            <button> <i className="fa fa-whatsapp" aria-hidden="true"></i> Pedir por whatsapp</button>
+                        </div>
+                    </div>
+                    <div className="description">
+                        <p>Descripción: {product.description}</p>
+                    </div>
                 </div>
             ) : (
-                <p>No hay detalles disponibles del producto.</p>
+                <p className="no-details-message">No hay detalles disponibles del producto.</p>
             )}
         </div>
     );

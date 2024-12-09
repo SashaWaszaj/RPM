@@ -1,4 +1,5 @@
 const Product = require('../models/productModel');
+const upload = require('../config/multer/multer');
 
 module.exports.createProduct = async (req, res) => {
     try {
@@ -59,27 +60,62 @@ module.exports.getProductByCode = (req, res) => {
         });
 };
 
-
 module.exports.updateProductByCode = async (req, res) => {
     try {
+        // Extraemos los datos del cuerpo de la solicitud
+        const { name, category, description } = req.body;
+        let updateData = { name, category, description };
+
+        // Si hay un archivo, lo añadimos a los datos de actualización
+        if (req.file) {
+            updateData.image = req.file.path;  // Guardamos la ruta de la imagen
+        }
+
+        // Actualizamos el producto en la base de datos usando el código
         const productUpdate = await Product.findOneAndUpdate(
-            { code: req.params.code },  
-            req.body,                   
-            { new: true, runValidators: true } // Asegurar que se validen las restricciones únicas
+            { code: req.params.code },  // Buscamos el producto por código
+            updateData,                 // Los datos que se actualizarán
+            { new: true, runValidators: true }  // Asegura que se validen las restricciones
         );
 
+        // Si no se encuentra el producto, devolvemos un error
         if (!productUpdate) {
             return res.status(404).json({ message: 'Producto no encontrado' });
         }
 
-        return res.status(200).json(productUpdate);
+        // Si se actualiza correctamente, devolvemos el producto actualizado
+        return res.status(200).json({ message: 'Producto actualizado exitosamente', product: productUpdate });
     } catch (error) {
-        if (error.code === 11000) {
-            return res.status(400).json({ message: 'El código del producto ya existe. Debe ser único.' });
-        }
+        console.error('Error al actualizar el producto:', error.message);
         return res.status(400).json({ message: error.message });
     }
 };
+
+module.exports.searchProducts = async (req, res) => {
+    const query = req.query.query;
+    // Verificamos que se haya proporcionado un término de búsqueda
+    if (!query) {
+        return res.status(400).json({ message: 'Se requiere un término de búsqueda' });
+    }
+
+    try {
+        // Buscar productos cuyo nombre contenga el término de búsqueda (ignorando mayúsculas/minúsculas)
+        const filteredProducts = await Product.find({
+            name: { $regex: query, $options: 'i' } // $regex para búsqueda parcial, $options: 'i' para case insensitive
+        });
+
+        // Devolvemos los productos filtrados
+        return res.status(200).json(filteredProducts);
+    } catch (error) {
+        console.error('Error al buscar productos:', error.message);
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+
+
+
+
 
 
 

@@ -1,18 +1,14 @@
-const express = require('express');
-const productRouter = express.Router();
 const productControllers = require ('../controllers/productController');
-const multer = require('multer');
 const upload = require('../config/multer/multer');
-const userControllers = require('../controllers/userController');
-const validateToken = require('./../middlewears/validateToken');
+const express = require('express');
+const { verifyToken } = require('../middlewears/validateToken');
+const productRouter = express.Router();
 
-
-productRouter.post('/new',validateToken, upload.single('image'), productControllers.createProduct);
+productRouter.post('/new',verifyToken, upload.single('image'), productControllers.createProduct);
 productRouter.get('/', productControllers.getAllProducts);
 productRouter.get('/code/:code', productControllers.getProductByCode);
-productRouter.put('/code/:code/edit',validateToken, productControllers.updateProductByCode); 
-productRouter.delete('/delete/:code',validateToken, productControllers.deleteProduct);
-productRouter.post('/register', userControllers.register );
-productRouter.post('/login', userControllers.login);
+productRouter.put('/code/:code/edit',verifyToken,upload.single('image'), productControllers.updateProductByCode); 
+productRouter.delete('/delete/:code',verifyToken, productControllers.deleteProduct);
+productRouter.get('/search', productControllers.searchProducts);
 
 module.exports = productRouter;

@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/product/register', formData);
+      const response = await axios.post('http://localhost:8080/api/auth/register', formData);
       console.log(response.data);
 
       navigate("/menu");
@@ -85,10 +85,10 @@ const Register = () => {
         </div>
         
         <div className="mensaje-error">{error}</div>
-
+        <div className='button-container'>
         <button className="button-1" role="button" type="submit">Registrar usuario</button>
         <button className="button-2" role="button" type="button" onClick={handleCancel}>Cancelar</button>
-        
+        </div>
       </form>
     </div>
   );

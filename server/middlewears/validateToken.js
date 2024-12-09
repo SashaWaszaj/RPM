@@ -1,20 +1,15 @@
 const jwt = require('jsonwebtoken');
-const clave = process.env.JWT_SECRET || 'clave_secreta_por_defecto';
+const { SECRET_KEY } = require('../config/keys');
 
-const validateToken = (req, res, next) => {
-    const token = req.header('Authorization')?.split(' ')[1]; // Extraer el token
+exports.verifyToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Formato "Bearer <token>"
+    if (!token) return res.status(401).json({ message: 'Token requerido' });
 
-    if (!token) {
-        return res.status(401).json({ message: 'No autorizado. Token no proporcionado.' });
-    }
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.status(403).json({ message: 'Token inválido' });
 
-    jwt.verify(token, clave, (err, user) => {
-        if (err) {
-            return res.status(403).json({ message: 'Token inválido.' });
-        }
-        req.user = user;
-        next(); // Continúa con la solicitud si el token es válido
+        req.user = user; // Agregar la información del usuario al request
+        next();
     });
 };
-
-module.exports = validateToken;

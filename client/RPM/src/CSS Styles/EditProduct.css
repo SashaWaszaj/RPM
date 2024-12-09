@@ -1,0 +1,153 @@
+.container-container #Form-container {
+    font-family: 'Trebuchet MS', sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.titulo-secundario {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="button"] {
+    background-color: #6c757d;
+    color: white;
+}
+
+button[type="button"]:hover {
+    background-color: #5a6268;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    margin-right: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+button.button-3 {
+    background-color: #dc3545;
+    color: white;
+}
+
+button.button-3:hover {
+    background-color: #c82333;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Espaciado entre botones */
+    margin-top: 20px; /* Espacio superior */
+}
+
+.button-1,
+.button-2,
+.button-3 {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-1 {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+.button-2 {
+    background-color: #2196F3; /* Azul */
+    color: white;
+}
+
+.button-3 {
+    background-color: red;
+    color: white;
+}
+
+img {
+    display: block;
+    margin: 10px auto;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+div {
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.success-message {
+    color: green;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

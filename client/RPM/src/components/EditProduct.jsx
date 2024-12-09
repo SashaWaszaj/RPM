@@ -1,48 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
-const token = localStorage.getItem('userToken');
-const headers = {
-    Authorization: `Bearer ${token}` // Incluye el token en los encabezados
-};
+import '../CSS Styles/EditProduct.css';
 
 const EditProduct = () => {
     const [product, setProduct] = useState({
-        code: '',  
+        code: 0,  
         name: '',
-        category: '',
         description: '',
         image: null,
     });
     const [previewImage, setPreviewImage] = useState(null);
     const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
     const [isProductLoaded, setIsProductLoaded] = useState(false); // Para verificar si el producto ha sido cargado
     const navigate = useNavigate();
+    const fileInputRef = useRef(null);
+
+    // Lista de categorías
+    const categories = [
+        "Pistones", "Cilindros", "Juntas", "Cigüeñal", "Bielas", 
+        "Cadenas-de-distribución", "Cajas-de-cambio", "Carburadores", 
+        "Accesorios-de-motor", "Embragues", "Cadenas-y-Correas", 
+        "Piñones", "Ejes-de-transmisión", "Poleas", "Rodamientos", 
+        "Transmision-varios", "Amortiguadores", "Horquillas", 
+        "Resortes", "Manillares", "Rodamientos-de-dirección", 
+        "Suspension-y-direccion-varios", "Pastillas-de-freno", 
+        "Discos-de-freno", "Cilindros-maestros", "Zapatas", 
+        "Accesorios-de-freno", "Neumáticos", "Llantas", "Cámaras-de-aire", 
+        "Válvulas", "Rayos-y-Niples", "Accesorios de rueda", 
+        "Silenciadores", "Colectores", "Tuberías", "Escape varios", 
+        "Carcasas", "Guardabarros", "Tanques-de-gasolina", 
+        "Cubiertas-laterales", "Baúles", "Asientos", "Cascos", 
+        "Accesorios-varios", "Baterías", "Alarmas", "GPS", "Faros", 
+        "Luces-traseras", "Intermitentes", "Luces-LED", "Iluminacion-varios", 
+        "Electronica-varios", "Herramientas", "Lubricantes y aceites", 
+        "Limpieza", "Filtros", "Kits-de-reparación", "Bicicletas"
+    ];
     
-    
+    // Ordenar categorías alfabéticamente
+    const sortedCategories = categories.sort((a, b) => a.localeCompare(b));
 
     // Manejar cambios en el formulario
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProduct({ ...product, [name]: value });
+        setError(null); // Limpia el mensaje de error
+        setSuccess(null); // Limpia el mensaje de éxito
+
     };
 
     // Manejar cambios en la imagen
     const handleImageChange = (e) => {
         const file = e.target.files[0];
-        setProduct({ ...product, image: file });
-
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setPreviewImage(reader.result);
-        };
         if (file) {
+            setProduct({ ...product, image: file });
+    
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreviewImage(reader.result);
+            };
             reader.readAsDataURL(file);
         }
     };
 
     // Buscar producto por código
     const handleSearchProductByCode = async () => {
+        setError(null);
+        setSuccess(null);
         try {
             const response = await Axios.get(`http://localhost:8080/product/code/${product.code}`);
             setProduct({
@@ -52,68 +77,143 @@ const EditProduct = () => {
                 description: response.data.description,
                 image: response.data.image,
             });
-            setPreviewImage(`http://localhost:8080/uploads/${response.data.image}`);
-            setIsProductLoaded(true); // Producto encontrado y cargado
+            
+            const imageUrl = `http://localhost:8080/${response.data.image}`;
+            setPreviewImage(imageUrl);  // Establecer la URL de la imagen en el estado
+    
+            // Log después de actualizar el estado
+            console.log('Previsualización de la imagen:', imageUrl);
+    
+            setIsProductLoaded(true);
         } catch (error) {
             console.error(error);
             setError("Producto no encontrado. Verifica el código.");
         }
     };
-
+    
     // Manejar la edición del producto
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
+        setSuccess(null);
+    
         try {
             const formData = new FormData();
-            formData.append('code', product.code);
-            formData.append('name', product.name);
-            formData.append('category', product.category);
-            formData.append('description', product.description);
+            formData.append('code', product.code); // Añadir código del producto
+            formData.append('name', product.name); // Añadir nombre
+            formData.append('category', product.category); // Añadir categoría
+            formData.append('description', product.description); // Añadir descripción
+    
+            // Si hay una imagen seleccionada, incluirla
             if (product.image) {
-                formData.append('image', product.image);
+                formData.append('image', product.image); // Nombre clave 'image'
             }
-           
-            // Enviar una solicitud PUT para actualizar el producto
-            const response = await Axios.put(`http://localhost:8080/product/code/${product.code}/edit`, formData, {
-                headers: {
-                    ...headers, 
-                    'Content-Type': 'multipart/form-data'
+    
+            const token = localStorage.getItem('accessToken');
+            const headers = {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data',
+            };
+    
+            let response = await Axios.put(`http://localhost:8080/product/code/${product.code}/edit`, formData, { headers });
+
+            if (response.status === 401) {
+                const refreshResponse = await Axios.post('http://localhost:8080/api/auth/refreshToken', { refreshToken });
+                const newToken = refreshResponse.data.accessToken;
+    
+                localStorage.setItem('accessToken', newToken);
+                headers['Authorization'] = `Bearer ${newToken}`;
+    
+                response = await Axios.put(`http://localhost:8080/product/code/${product.code}/edit`, formData, { headers });
+            }
+    
+            if (response.status === 200) {
+                // Limpiar los campos del formulario
+                setProduct({
+                    code: 0,
+                    name: '',
+                    category: '',
+                    description: '',
+                    image: null,
+                });
+                setPreviewImage(null);  // Limpiar la previsualización de la imagen
+                setSuccess("Producto actualizado exitosamente.");
+                if (fileInputRef.current) {
+                    fileInputRef.current.value = ""; // Limpiar el campo de archivo
                 }
-            });
-
-            console.log(response);
-            navigate(`/product/${product.category}`); // Redirigir después de la edición
+            }
         } catch (error) {
-            console.error(error);
-            setError("Error al editar el producto. Por favor, intenta nuevamente.");
+            setError(error.response?.data?.message || 'Ocurrió un error inesperado.');
         }
-    };
-
-    // Manejar la eliminación del producto
+    };    
+    
+    
     const handleDelete = async () => {
-        try {
-            const response = await Axios.delete(`http://localhost:8080/product/delete/${product.code}`, { headers });
-            console.log(response);
-            navigate('/menu'); // Redirigir después de eliminar
-        } catch (error) {
-            console.error(error);
-            setError("Error al eliminar el producto. Por favor, intenta nuevamente.");
+        // Mostrar mensaje de confirmación
+        const isConfirmed = window.confirm("¿Estás seguro que deseas eliminar este producto permanentemente?");
+        
+        if (isConfirmed) {
+            try {
+                const token = localStorage.getItem('accessToken');
+                const refreshToken = localStorage.getItem('refreshToken');
+                const headers = {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
+                };
+        
+                // Intenta eliminar el producto
+                let response = await Axios.delete(`http://localhost:8080/product/delete/${product.code}`, { headers });
+        
+                // Si el token expira, realiza un refresh y reintenta
+                if (response.status === 401) {
+                    const refreshResponse = await Axios.post('http://localhost:8080/api/auth/refreshToken', { refreshToken });
+                    const newToken = refreshResponse.data.accessToken;
+        
+                    // Actualiza el token en localStorage y en los headers
+                    localStorage.setItem('accessToken', newToken);
+                    headers['Authorization'] = `Bearer ${newToken}`;
+        
+                    // Reintenta la eliminación con el nuevo token
+                    response = await Axios.delete(`http://localhost:8080/product/delete/${product.code}`, { headers });
+                }
+        
+                // Verifica si la eliminación fue exitosa
+                if (response.status === 204) {
+                    console.log("Producto eliminado exitosamente:", response);
+                    setSuccess("Producto eliminado exitosamente.");
+                    // Limpiar los campos del formulario
+                    setProduct({
+                        code: 0,
+                        name: '',
+                        category: '',
+                        description: '',
+                        image: null,
+                    });
+                    setPreviewImage(null);  // Limpiar la previsualización de la imagen
+                }
+            } catch (error) {
+                console.error("Error al eliminar el producto:", error);
+                setError("Error al eliminar el producto. Por favor, intenta nuevamente.");
+            }
+        } else {
+            console.log("Eliminación cancelada.");
         }
     };
-
+    
     // Manejar cancelación
     const handleCancel = () => {
         navigate('/menu');
     };
 
     return (
-        <div className="form-container">
-            <form onSubmit={handleSubmit}>
+        <div className="container-container">
+        <div className="form-container" id='Form-container'>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <h2 className="titulo-secundario">Editar producto por código</h2>
 
                 {/* Buscar producto por código */}
                 <div>
-                    <label htmlFor="code">Código del producto:</label> 
+                    <label htmlFor="code">SKU:</label> 
                     <input 
                         type="number"
                         id="code"  
@@ -139,73 +239,16 @@ const EditProduct = () => {
                                 required
                             />
                         </div>
-                <div>
-                    <label htmlFor="category">Categoria:</label>
-                    <select id="category" name="category" value={product.category} onChange={handleChange} required>
-                        <option value="">Selecciona una categoría</option>
-                        <option value="Pistones">Pistones</option>
-                        <option value="Cilindros">Cilindros</option>
-                        <option value="Juntas">Juntas</option>
-                        <option value="Cigüeñal">Cigüeñal</option>
-                        <option value="Bielas">Bielas</option>
-                        <option value="Cadenas-de-distribución">Cadenas de distribución</option>
-                        <option value="Cajas-de-cambio">Cajas de cambio</option>
-                        <option value="Carburadores">Carburadores</option>
-                        <option value="Accesorios-de-motor">Accesorios de motor</option>
-                        <option value="Embragues">Embragues</option>
-                        <option value="Cadenas-y-Correas">Cadenas y Correas</option>
-                        <option value="Piñones">Piñones</option>
-                        <option value="Ejes-de-transmisión">Ejes de transmisión</option>
-                        <option value="Poleas">Poleas</option>
-                        <option value="Rodamientos">Rodamientos</option>
-                        <option value="Transmision-varios">Transmision varios</option>
-                        <option value="Amortiguadores">Amortiguadores</option>
-                        <option value="Horquillas">Horquillas</option>
-                        <option value="Resortes">Resortes</option>
-                        <option value="Manillares">Manillares</option>
-                        <option value="Rodamientos-de-dirección">Rodamientos de dirección</option>
-                        <option value="Suspension-y-direccion-varios">Suspension y direccion varios</option>
-                        <option value="Pastillas-de-freno">Pastillas de freno</option>
-                        <option value="Discos-de-freno">Discos de freno</option>
-                        <option value="Cilindros-maestros">Cilindros maestros</option>
-                        <option value="Zapatas">Zapatas</option>
-                        <option value="Accesorios-de-freno">Accesorios de freno</option>
-                        <option value="Neumáticos">Neumáticos</option>
-                        <option value="Llantas">Llantas</option>
-                        <option value="Cámaras-de-aire">Cámaras de aire</option>
-                        <option value="Válvulas">Válvulas</option>
-                        <option value="Rayos-y-Niples">Rayos y Niples</option>
-                        <option value="Accesorios de rueda">Accesorios de rueda</option>
-                        <option value="Silenciadores">Silenciadores</option>
-                        <option value="Colectores">Colectores</option>
-                        <option value="Tuberías">Tuberías</option>
-                        <option value="Escape varios">Escape varios</option>
-                        <option value="Carcasas">Carcasas</option>
-                        <option value="Guardabarros">Guardabarros</option>
-                        <option value="Tanques-de-gasolina">Tanques de gasolina</option>
-                        <option value="Cubiertas-laterales">Cubiertas laterales</option>
-                        <option value="Baúles">Baúles</option>
-                        <option value="Asientos">Asientos</option>
-                        <option value="Cascos">Cascos</option>
-                        <option value="Accesorios-varios">Accesorios varios</option>
-                        <option value="Baterías">Baterías</option>
-                        <option value="Alarmas">Alarmas</option>
-                        <option value="GPS">GPS</option>
-                        <option value="Faros">Faros</option>
-                        <option value="Luces-traseras">Luces traseras</option>
-                        <option value="Intermitentes">Intermitentes</option>
-                        <option value="Luces-LED">Luces LED</option>
-                        <option value="Iluminacion-varios">Iluminacion varios</option>
-                        <option value="Electronica-varios">Electronica varios</option>
-                        <option value="Herramientas">Herramientas</option>
-                        <option value="Lubricantes y aceites">Lubricantes y aceites</option>
-                        <option value="Limpieza">Limpieza</option>
-                        <option value="Filtros">Filtros</option>
-                        <option value="Kits-de-reparación">Kits de reparación</option>
-                        <option value="Bicicletas">Bicicletas</option>
-                    </select>
-                </div>
-                <div>
+                        <div>
+                            <label htmlFor="category">Categoria:</label>
+                            <select id="category" name="category" value={product.category} onChange={handleChange} required>
+                                <option value="">Selecciona una categoría</option>
+                                {sortedCategories.map((cat) => (
+                                    <option key={cat} value={cat}>{cat}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
                             <label htmlFor="description">Descripción (opcional):</label>
                             <input 
                                 type="text"
@@ -215,7 +258,6 @@ const EditProduct = () => {
                                 onChange={handleChange}
                             />
                         </div>
-
                         <div>
                             <label htmlFor="image">Imagen (opcional):</label>
                             <input 
@@ -223,27 +265,33 @@ const EditProduct = () => {
                                 id="image"
                                 name="image"
                                 onChange={handleImageChange}
+                                ref={fileInputRef}
                             />
                         </div>
 
-                        {/* Mostrar la previsualización de la imagen */}
                         {previewImage && (
                             <div>
                                 <img src={previewImage} alt="Previsualización de la imagen" style={{ maxWidth: '300px', maxHeight: '300px' }} />
                             </div>
                         )}
 
-                        <button className="button-1" type="submit">Guardar cambios</button>
-                        <button className="button-3" type="button" onClick={handleDelete} style={{ backgroundColor: 'red', color: 'white' }}>
-                            Eliminar producto
-                        </button>
-                        <button className="button-2" type="button" onClick={handleCancel}>Cancelar</button>
-                        
+                        {/* Contenedor para los botones */}
+                        <div className="button-container">
+                            <button className="button-1" type="submit">Guardar cambios</button>
+                            <button className="button-3" type="button" onClick={handleDelete} style={{ backgroundColor: 'red', color: 'white' }}>
+                                Eliminar producto
+                            </button>
+                            <button className="button-2" type="button" onClick={handleCancel}>
+                                Cancelar
+                            </button>
+                        </div>
                     </>
                 )}
 
-                <div>{error}</div>
             </form>
+                {error && <div style={{ color: 'red' }}>{error}</div>}
+                {success && <div style={{ color: 'green' }}>{success}</div>}
+        </div>
         </div>
     );
 };

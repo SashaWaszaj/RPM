@@ -1,0 +1,69 @@
+/* Contenedor del menú */
+.link-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+    max-width: 400px;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Trebuchet MS', sans-serif;
+  }
+  
+  /* Estilo de los enlaces */
+  .link-menu .link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #cf8927;
+    text-decoration: none;
+    border: 1px solid #cf8927;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin: 0 10px;
+  }
+  
+  .link-menu .link:hover {
+    color: #fff;
+    background-color: #cf8927;
+    border-color: #c07c1c;
+  }
+  
+  /* Estilo del botón de cerrar sesión */
+  .link-menu button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #d9534f;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .link-menu button:hover {
+    background-color: #c9302c;
+  }
+  
+  /* Media query para dispositivos pequeños */
+  @media (max-width: 480px) {
+    .link-menu {
+      padding: 20px;
+    }
+  
+    .link-menu .link,
+    .link-menu button {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+  

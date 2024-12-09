@@ -1,8 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate, Link } from 'react-router-dom';
+import '../CSS Styles/NavBar.css';
+import logo from '../img/RPM.png';
+
 
 const NavBar = ({ setSelectedCategory }) => {
-
+    const [query, setQuery] = useState("");
     const navigate = useNavigate();
 
     const handleCategoryClick = (category) => {
@@ -10,24 +14,52 @@ const NavBar = ({ setSelectedCategory }) => {
         navigate(`/product/${category}`);
     };
 
+    const handleSearchChange = (e) => {
+        setQuery(e.target.value); // Actualiza el estado con el valor de búsqueda
+    };
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault(); // Evita el comportamiento por defecto del formulario
+        if (query) {
+            // Aquí redirigimos a la página de resultados con el término de búsqueda
+            navigate(`/search?query=${query}`);
+        }
+    };
+
     return (
         <header className='header'>
+            <div className='top-header'>
+                <ul className='information-list'>
+                    <li className='information-list-item'><i className="fa fa-phone" aria-hidden="true"></i>+595 985 172178</li>
+                    <li className='information-list-item'><i className="fa fa-map-marker" aria-hidden="true"></i>Ubicacion</li>
+                    <li className='information-list-item'><i className="fa fa-envelope" aria-hidden="true"></i>Contacto</li>
+                </ul>
+            </div>
             <div className='bar-principal'>
-                <div>
-                    <h1 className='RPM'>RPM</h1>
-                    <h3 className='moto-rep'>Moto Repuestos</h3>
+                <div className='div-logo'>
+                    <Link to="/"><img className='logo' src={logo} alt='RPM logo'/></Link>
                 </div>
                 <div className="search-container">
-                    <form action="/action_page.php">
-                    <input className="search-input" type="text" placeholder="Buscar productos..." name="search"></input>
-                    <button className="search-button" type="submit"><i className="fa fa-search"></i></button>
-                    </form>
+                <form onSubmit={handleSearchSubmit}>
+                    <input
+                        className="search-input"
+                        type="text"
+                        placeholder="Buscar productos..."
+                        name="search"
+                        value={query}
+                        onChange={handleSearchChange}
+                    />
+                    <button className="search-button" type="submit">
+                    <i className="fa fa-search"></i>
+                    </button>
+                </form>
                 </div>
+                
             </div>
             <div className='categories'>
                 <ul>
                     <div className='dropdown'>
-                        <li><a className="category-box">Motor ⌵</a></li>
+                        <li><a className="category-box">Motor <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Pistones")}>Pistones</a>
                                 <a onClick={() => handleCategoryClick("Cilindros")}>Cilindros</a>
@@ -38,7 +70,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Transmisión ⌵</a></li>
+                        <li><a className="category-box">Transmisión <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Cajas-de-cambio")}>Cajas de cambio</a>
                                 <a onClick={() => handleCategoryClick("Embragues")}>Embragues</a>
@@ -51,7 +83,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Suspensión y Direccion ⌵</a></li>
+                        <li><a className="category-box">Suspensión y Direccion <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Amortiguadores")}>Amortiguadores</a>
                                 <a onClick={() => handleCategoryClick("Horquillas")}>Horquillas</a>
@@ -62,7 +94,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Frenos ⌵</a></li>
+                        <li><a className="category-box">Frenos <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Pastillas-de-freno")}>Pastillas de freno</a>
                                 <a onClick={() => handleCategoryClick("Discos-de-freno")}>Discos de freno</a>
@@ -72,7 +104,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Ruedas y Neumáticos ⌵</a></li>
+                        <li><a className="category-box">Ruedas y Neumáticos <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Neumáticos")}>Neumáticos</a>
                                 <a onClick={() => handleCategoryClick("Llantas")}>Llantas</a>
@@ -83,7 +115,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Escape ⌵</a></li>
+                        <li><a className="category-box">Escape <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Silenciadores")}>Silenciadores</a>
                                 <a onClick={() => handleCategoryClick("Colectores")}>Colectores</a>
@@ -92,7 +124,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Accesorios y Carrocería ⌵</a></li>
+                        <li><a className="category-box">Accesorios y Carrocería <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Carcasas")}>Carcasas</a>
                                 <a onClick={() => handleCategoryClick("Guardabarros")}>Guardabarros</a>
@@ -105,7 +137,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Iluminación y electrónica ⌵</a></li>
+                        <li><a className="category-box">Iluminación y electrónica <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Baterías")}>Baterías</a>
                                 <a onClick={() => handleCategoryClick("Alarmas")}>Alarmas</a>
@@ -119,7 +151,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Otros ⌵</a></li>
+                        <li><a className="category-box">Otros <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Herramientas")}>Herramientas</a>
                                 <a onClick={() => handleCategoryClick("Lubricantes-y-aceites")}>Lubricantes y aceites</a>

@@ -1,0 +1,124 @@
+/* Contenedor principal de los detalles del producto */
+.product-details-container {
+    padding: 0;
+    font-family: 'Trebuchet MS', sans-serif;
+    max-width: 800px;
+    margin: 20px 0;
+    background: #f9f9f9;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+  }
+
+  .product-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 200px;
+  }
+
+  .Product-information-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+  }
+  .product-container .Product-information-bar p{
+    font-size: small;
+  }
+
+  .product-container .Product-information-bar h3{
+    font-size: 400%;
+    margin-top: 0;
+  }
+  
+  /* Imagen del producto */
+  .product-details-container img {
+    max-width: 600px;
+    height: auto;
+    border: none;
+    margin-bottom: 20px;
+  }
+  
+  /* Nombre del producto */
+  .product-details-container h3 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .Product-information-bar button{
+    background-color: rgb(33, 218, 63);
+    color: #f9f9f9;
+    text-align: center;
+    border: none;
+    margin: 10px 0;
+  }
+  .Product-information-bar button:hover{
+    background-color: rgb(28, 198, 56);
+    border: none;
+  }
+  .description{
+    margin-left: 200px;
+    text-align: start;
+    border-top-style: solid;
+    border-color: #555;
+    margin-bottom: 50px;
+  }
+  
+  /* Información adicional */
+  .product-details-container p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+  }
+  .product-details-container .warning{
+    color: rgb(215, 7, 7);
+    text-align: left;
+    font-weight: bold;
+  }
+
+  /* Categoría */
+  .product-details-container p span {
+    color: #666464;
+  }
+  .product-details-container p{
+    color: #282626;
+  }
+
+
+  /* Mensaje de error */
+  .product-details-container .error-message {
+    color: red;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Mensaje cuando no hay detalles */
+  .product-details-container .no-details-message {
+    font-size: 20px;
+    color: #999;
+    font-style: italic;
+    margin-top: 20px;
+  }
+  
+  /* Media Query para dispositivos pequeños */
+  @media (max-width: 768px) {
+    .product-details-container {
+      padding: 15px;
+    }
+  
+    .product-details-container img {
+      max-width: 100%;
+    }
+  
+    .product-details-container h3 {
+      font-size: 24px;
+    }
+  
+    .product-details-container p {
+      font-size: 16px;
+    }
+  }
+  
