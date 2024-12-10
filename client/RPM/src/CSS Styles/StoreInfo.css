@@ -1,0 +1,72 @@
+.StoreInfo-main-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 0;
+    padding-left: 120px;
+    background-color: rgb(244, 244, 242);
+    padding-top: 40px;
+}
+.store-info-container{
+    margin-top: 20px;
+}
+
+.info-box{
+    background-color:rgb(255, 255, 255);
+    margin-top: 15px;
+    margin-right: 150px;
+}
+.info-box-2{
+    background-color:rgb(255, 255, 255);
+    margin-top: 15px;
+    margin-right: 150px;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 200px;
+    padding-bottom: 60px;
+}
+.info-box-contacto-horario{
+    display: flex;
+    gap: 100px
+}
+p{
+    color:rgb(152, 150, 150);
+}
+.fa-map-marker, .fa-clock-o, .fa-phone, .fa-envelope, .fa-home, .fa-whatsapp { 
+    margin-right: 5px;
+    color: #e9b56c;
+}
+h4{
+    color: #cf8927;
+}
+.ubicacion{
+    border-bottom: solid rgb(164, 164, 164);
+}
+.empresa-picture{
+    margin: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    size: auto;
+}
+.Store-info-title{
+    margin-bottom: 0;
+    margin-top: 10px;
+    color: rgb(57, 56, 56);
+}
+.parrafo-la-empresa-1{
+    padding: 40px;
+    padding-bottom: 10px;
+    color: rgb(66, 63, 63);
+}
+.parrafo-la-empresa-2{
+    padding: 40px;
+    padding-top: 0;
+    padding-bottom: 10px;
+    color: rgb(66, 63, 63);
+}
+.parrafo-la-empresa-3{
+    padding: 40px;
+    padding-top: 0;
+    padding-bottom: 50px;
+    color: rgb(66, 63, 63);
+}

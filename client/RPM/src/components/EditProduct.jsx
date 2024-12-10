@@ -7,6 +7,7 @@ const EditProduct = () => {
     const [product, setProduct] = useState({
         code: 0,  
         name: '',
+        brand: '',
         description: '',
         image: null,
     });
@@ -73,6 +74,7 @@ const EditProduct = () => {
             setProduct({
                 code: response.data.code,
                 name: response.data.name,
+                brand: response.data.brand,
                 category: response.data.category,
                 description: response.data.description,
                 image: response.data.image,
@@ -101,6 +103,7 @@ const EditProduct = () => {
             const formData = new FormData();
             formData.append('code', product.code); // Añadir código del producto
             formData.append('name', product.name); // Añadir nombre
+            formData.append('brand', product.brand); // Añadir nombre
             formData.append('category', product.category); // Añadir categoría
             formData.append('description', product.description); // Añadir descripción
     
@@ -132,6 +135,7 @@ const EditProduct = () => {
                 setProduct({
                     code: 0,
                     name: '',
+                    brand: '',
                     category: '',
                     description: '',
                     image: null,
@@ -185,6 +189,7 @@ const EditProduct = () => {
                     setProduct({
                         code: 0,
                         name: '',
+                        brand: '',
                         category: '',
                         description: '',
                         image: null,
@@ -240,6 +245,16 @@ const EditProduct = () => {
                             />
                         </div>
                         <div>
+                            <label htmlFor="brand">Marca:</label>
+                            <input 
+                                type="text"
+                                id="brand"
+                                name="brand"
+                                value={product.brand}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div>
                             <label htmlFor="category">Categoria:</label>
                             <select id="category" name="category" value={product.category} onChange={handleChange} required>
                                 <option value="">Selecciona una categoría</option>
@@ -270,7 +285,7 @@ const EditProduct = () => {
                         </div>
 
                         {previewImage && (
-                            <div>
+                            <div className="img-preview">
                                 <img src={previewImage} alt="Previsualización de la imagen" style={{ maxWidth: '300px', maxHeight: '300px' }} />
                             </div>
                         )}

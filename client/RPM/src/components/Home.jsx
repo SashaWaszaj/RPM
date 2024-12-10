@@ -3,6 +3,7 @@ import '../CSS Styles/Home.css';
 import banner1 from '../img/banner 1.png';
 import banner2 from '../img/banner 2.png';
 import banner3 from '../img/banner 3.png';
+import BrandsCarrousel from './BrandsCarrousel';
 
 const images = [ banner1, banner2, banner3 ];
 
@@ -19,12 +20,17 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="carousel-container">
-            <img
-                src={images[currentIndex]}
-                alt={`Imagen ${currentIndex + 1}`}
-                className="carousel-image"
-            />
+        <div>
+            <div className="carousel-container">
+                <img
+                    src={images[currentIndex]}
+                    alt={`Imagen ${currentIndex + 1}`}
+                    className="carousel-image"
+                />
+            </div>
+            <div>
+                <BrandsCarrousel></BrandsCarrousel>
+            </div>
         </div>
     );
 };

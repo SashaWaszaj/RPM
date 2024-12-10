@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
+import Sidebar from './SideBar';
+import '../CSS Styles/SearchResults.css';
 
 const SearchResults = () => {
     const [products, setProducts] = useState([]);
@@ -24,7 +26,11 @@ const SearchResults = () => {
     }, [query]);
 
     return (
-        <div>
+        <div className='Search-results-main-container'>
+            <div>
+            <Sidebar products={products} />
+            </div>
+            <div className='search-results-container'>
             <h2>Resultados de búsqueda para "{query}"</h2>
                     <div className="product-list">
                         {products.length > 0 ? (
@@ -42,6 +48,7 @@ const SearchResults = () => {
                             ) : (
                             <p className='titulo-subtitulo-product-list'>No hay resultados para "{query}"</p>
                 )}
+            </div>
             </div>
         </div>
     );

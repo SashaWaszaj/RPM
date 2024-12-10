@@ -63,8 +63,8 @@ module.exports.getProductByCode = (req, res) => {
 module.exports.updateProductByCode = async (req, res) => {
     try {
         // Extraemos los datos del cuerpo de la solicitud
-        const { name, category, description } = req.body;
-        let updateData = { name, category, description };
+        const { name, brand, category, description } = req.body;
+        let updateData = { name, brand, category, description };
 
         // Si hay un archivo, lo añadimos a los datos de actualización
         if (req.file) {

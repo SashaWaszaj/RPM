@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../CSS Styles/Sidebar.css";
+import "../CSS Styles/SideBar.css";
 
 const Sidebar = () => {
   const [openDropdown, setOpenDropdown] = useState({});
@@ -61,7 +61,7 @@ const Sidebar = () => {
       "Accesorios-de-rueda",
     ],
     Escape: ["Silenciadores", "Colectores", "Tuberías", "Escape-varios"],
-    "Accesorios y Carroserias": [
+    Carroserias: [
       "Carcasas",
       "Guardabarros",
       "Tanques-de-gasolina",

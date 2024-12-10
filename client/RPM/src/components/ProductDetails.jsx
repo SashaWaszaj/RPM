@@ -35,10 +35,11 @@ const ProductDetails = () => {
                         </div>
                         <div className="Product-information-bar">
                             <h3>{product.name}</h3>
-                            <p>SKU: <span className="SKU-content">{product.code}</span></p>
+                            <p className="sku-section">SKU: <span className="SKU-content">{product.code}</span></p>
+                            <p>Marca: <span>{product.brand}</span></p>
                             <p>Categoría: <span>{product.category}</span></p>
                             <p className="warning">* Precio y Stock sujeto a disponibilidad.</p>
-                            <button> <i className="fa fa-whatsapp" aria-hidden="true"></i> Pedir por whatsapp</button>
+                            <button> <i className="fa fa-whatsapp" aria-hidden="true"></i> Consultar por Whatsapp</button>
                         </div>
                     </div>
                     <div className="description">

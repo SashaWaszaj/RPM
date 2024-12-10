@@ -29,11 +29,17 @@ const NavBar = ({ setSelectedCategory }) => {
     return (
         <header className='header'>
             <div className='top-header'>
-                <ul className='information-list'>
-                    <li className='information-list-item'><i className="fa fa-phone" aria-hidden="true"></i>+595 985 172178</li>
-                    <li className='information-list-item'><i className="fa fa-map-marker" aria-hidden="true"></i>Ubicacion</li>
-                    <li className='information-list-item'><i className="fa fa-envelope" aria-hidden="true"></i>Contacto</li>
-                </ul>
+                <div>
+                    <ul className='information-list'>
+                        <li className='information-list-item'><a><i class="fa fa-whatsapp" aria-hidden="true"></i>+595 985 172178</a></li>
+                        <li className='information-list-item'><Link to='/ubicacion'><i className="fa fa-map-marker" aria-hidden="true"></i>Ubicacion</Link></li>
+                        <li className='information-list-item'><Link to='/contacto'><i className="fa fa-envelope" aria-hidden="true"></i>Contacto</Link></li>
+                        <li className='information-list-item'><Link to='/la-empresa'><i className="fa fa-home" aria-hidden="true"></i>La empresa</Link></li>
+                    </ul>
+                </div>
+                <div className='consulta-precio-mayorista'>
+                    <p><a>Consulta nuestros <span style={{fontWeight: "bold"}}>precios mayoristas</span></a></p>
+                </div>
             </div>
             <div className='bar-principal'>
                 <div className='div-logo'>
@@ -44,7 +50,7 @@ const NavBar = ({ setSelectedCategory }) => {
                     <input
                         className="search-input"
                         type="text"
-                        placeholder="Buscar productos..."
+                        placeholder="Buscar productos"
                         name="search"
                         value={query}
                         onChange={handleSearchChange}
@@ -124,7 +130,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Accesorios y Carrocería <span className='simbolito'> ⌵</span></a></li>
+                        <li><a className="category-box">Carrocería <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Carcasas")}>Carcasas</a>
                                 <a onClick={() => handleCategoryClick("Guardabarros")}>Guardabarros</a>

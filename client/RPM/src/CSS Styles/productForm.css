@@ -39,6 +39,9 @@
     margin-bottom: 15px;
     box-sizing: border-box;
   }
+  .category{
+    margin-right: 20px;
+  }
   
   form input:focus,
   form select:focus {

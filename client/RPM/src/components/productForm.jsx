@@ -7,6 +7,7 @@ const ProductForm = () => {
     const [product, setProduct] = useState({
         code: '',  
         name: '',
+        brand: '',
         category: '',
         description: '',
         image: null,
@@ -67,6 +68,7 @@ const ProductForm = () => {
             const formData = new FormData();
             formData.append('code', product.code);
             formData.append('name', product.name);
+            formData.append('brand', product.brand);
             formData.append('category', product.category);
             formData.append('description', product.description);
             formData.append('image', product.image);
@@ -96,6 +98,7 @@ const ProductForm = () => {
                 setProduct({
                     code: '',
                     name: '',
+                    brand: '',
                     category: '',
                     description: '',
                     image: null,
@@ -153,6 +156,17 @@ const ProductForm = () => {
                     />
                 </div>
                 <div>
+                    <label htmlFor="brand">Marca:</label>
+                    <input 
+                        type="text"
+                        id="brand"
+                        name="brand"
+                        value={product.brand}
+                        onChange={handleChange}
+                        onFocus={handleFocus}
+                    />
+                </div>
+                <div className="category">
                     <label htmlFor="category">Categoría:</label>
                     <select id="category" name="category" value={product.category} onChange={handleChange} onFocus={handleFocus} required>
                         <option value="">Selecciona una categoría</option>

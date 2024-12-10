@@ -14,6 +14,9 @@ import Axios from 'axios';
 import PrivateRoute from './components/PrivateRoute'; // Importa el componente PrivateRoute
 import SearchResults from './components/SearchResults';
 import Footer from './components/Footer';
+import LaEmpresa from './components/LaEmpresa';
+import Contacto from './components/Contacto';
+import Ubicacion from './components/Ubicacion';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -74,6 +77,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/:code" element={<ProductDetails />} />
         <Route path="/search" element={<SearchResults />} />
+        <Route path="/la-empresa" element={<LaEmpresa/>} />
+        <Route path="/contacto" element={<Contacto/>} />
+        <Route path="/ubicacion" element={<Ubicacion/>} />
 
         {/* Rutas protegidas */}
         <Route 

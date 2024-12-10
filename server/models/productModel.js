@@ -6,6 +6,10 @@ const productSchema = mongoose.Schema({
         required: [true, 'Please insert the code of the product.'],
         unique: true
     },
+    brand: {
+        type: String,
+        required: [false]
+    },
     name: {
         type: String,
         required: [true, 'Please insert the name of the product.'],
