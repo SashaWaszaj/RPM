@@ -1,0 +1,16 @@
+.maps-container{
+    width: 100%; 
+    height: 400px; 
+    margin: 20px 0;
+}
+.map{
+    border: 0;
+}
+@media (max-width: 768px) {
+    .maps-container{
+        height: 400px;
+    }
+    .map{
+        width: 100%;
+    }
+}

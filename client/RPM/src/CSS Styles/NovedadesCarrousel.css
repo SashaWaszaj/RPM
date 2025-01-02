@@ -1,0 +1,34 @@
+.novedades-carrousel {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 0;
+  }
+  
+  .carrousel-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+  
+  .carrousel-list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .product-item {
+    flex: 0 0 auto;
+    width: 200px;
+  }
+
+  .titulo-subtitulo-product-list-carrousel {
+    font-size: xx-large;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #213547;
+    padding-top: 30px;
+    text-align:center;
+    padding-bottom: 10px;
+  }
+  
+  

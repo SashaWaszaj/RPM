@@ -1,0 +1,32 @@
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px; /* Distancia desde la parte inferior */
+    right: 20px; /* Distancia desde la parte derecha */
+    z-index: 1000; /* Coloca el botón encima de otros elementos */
+  }
+  
+  .whatsapp-float img {
+    width: 60px; /* Tamaño del ícono */
+    height: 60px;
+    border-radius: 50%; /* Hace que sea circular */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .whatsapp-float img:hover {
+    transform: scale(1.1); /* Efecto de agrandamiento al pasar el ratón */
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .whatsapp-float img {
+    animation: bounce 2s infinite; /* Animación de rebote */
+  }
+  
