@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS-Styles/WhatsAppBubble.css";
+import "../CSS-Styles/WhatsappBubble.css";
 import whatsapp from "../img/whatsapp.png"
 
 const WhatsAppBubble = ({ phoneNumber, message }) => {
