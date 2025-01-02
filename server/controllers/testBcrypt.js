@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 // Contraseña que quieres verificar (la misma que ingresaste durante el login)
 const inputPassword = 'password123'; // Reemplaza con la contraseña ingresada en Postman

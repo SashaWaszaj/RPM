@@ -25,7 +25,7 @@ const Contacto = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch("http://localhost:8080/contact/send", {
+      const response = await fetch("https://rpm-oi7i.onrender.com/contact/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
