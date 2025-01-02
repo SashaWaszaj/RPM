@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "../CSS Styles/Home.css"; 
-import banner1 from "../img/banner 1.png";
-import banner2 from "../img/banner 2.png";
-import banner3 from "../img/banner 3.png";
+import banner1 from "../img/banner-1.png";
+import banner2 from "../img/Banner-2.png";
+import banner3 from "../img/Banner-3.png";
 import BrandsCarrousel from "./BrandsCarrousel";
 import NovedadesCarrousel from "./NovedadesCarrousel";
 
