@@ -6,6 +6,7 @@ import banner2 from "../img/Banner-2.png";
 import banner3 from "../img/Banner-3.png";
 import BrandsCarrousel from "./BrandsCarrousel";
 import NovedadesCarrousel from "./NovedadesCarrousel";
+import { Helmet } from "react-helmet";
 
 const images = [banner1, banner2, banner3];
 
@@ -36,6 +37,13 @@ const Home = () => {
 
   return (
     <div>
+       <>
+      <Helmet>
+        <title>RPM Motos - Inicio</title>
+        <meta name="description" content="Bienvenido a RPM Motos, el mejor lugar para repuestos y accesorios." />
+      </Helmet>
+      <h1>Bienvenido a RPM Motos</h1>
+    </>
       <div className="carousel-container">
         <img
           src={images[currentIndex]}
