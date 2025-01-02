@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from "react";
 import { useNavigate, Link } from 'react-router-dom';
-import '../CSS Styles/NavBar.css';
+import '../CSS-Styles/NavBar.css';
 import logo from '../img/RPM.png';
 
 

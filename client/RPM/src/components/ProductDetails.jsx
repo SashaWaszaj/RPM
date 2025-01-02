@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import '../CSS Styles/ProductDetails.css';
+import '../CSS-Styles/ProductDetails.css';
 
 const ProductDetails = () => {
     const [product, setProduct] = useState(null); // Iniciar el estado del producto como null

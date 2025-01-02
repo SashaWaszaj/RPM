@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import "../CSS Styles/Home.css"; 
+import "../CSS-Styles/Home.css"; 
 import banner1 from "../img/banner-1.png";
 import banner2 from "../img/Banner-2.png";
 import banner3 from "../img/Banner-3.png";

@@ -1,6 +1,6 @@
 import React from "react";
 import StoreInfoSideBar from "./StoreInfoSideBar";
-import "../CSS Styles/StoreInfo.css";
+import "../CSS-Styles/StoreInfo.css";
 import laEmpresa from "../uploads/empresa.jpg";
 
 const LaEmpresa = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../CSS Styles/SideBar.css";
+import "../CSS-Styles/SideBar.css";
 import { Link, useLocation } from "react-router-dom";
 
 const StoreInfoSideBar = () => {

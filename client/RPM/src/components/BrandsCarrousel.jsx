@@ -14,7 +14,7 @@ import rcx from '../uploads/rcx.jpg';
 import riffel from '../uploads/Riffel.jpg';
 import rinaldi from '../uploads/Rinaldi.jpg';
 import shiro from '../uploads/shiro.png';
-import '../CSS Styles/BrandsCarrousel.css';
+import '../CSS-Styles/BrandsCarrousel.css';
 
 function BrandsCarrousel() {
   let sliderRef = useRef(null);

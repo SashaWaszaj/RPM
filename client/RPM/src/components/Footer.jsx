@@ -1,5 +1,5 @@
 import React from 'react';
-import '../CSS Styles/Footer.css'; // Archivo CSS para estilos
+import '../CSS-Styles/Footer.css'; // Archivo CSS para estilos
 import logo from '../img/RPM.png';
 import { Link } from 'react-router-dom';
 

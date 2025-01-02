@@ -1,6 +1,6 @@
 import React from "react";
 import StoreInfoSideBar from "./StoreInfoSideBar";
-import "../CSS Styles/StoreInfo.css";
+import "../CSS-Styles/StoreInfo.css";
 import Map from "./Maps";
 
 const Ubicacion = () => {

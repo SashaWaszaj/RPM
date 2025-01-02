@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../CSS Styles/SideBar.css";
+import "../CSS-Styles/SideBar.css";
 
 const Sidebar = () => {
   const [openDropdown, setOpenDropdown] = useState({});

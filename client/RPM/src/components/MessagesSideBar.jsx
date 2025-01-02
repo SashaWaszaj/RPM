@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import "../CSS Styles/MessagesSideBar.css"; // Si necesitas estilos personalizados
+import "../CSS-Styles/MessagesSideBar.css"; // Si necesitas estilos personalizados
 
 const MessagesSideBar = () => {
   const [messages, setMessages] = useState([]);

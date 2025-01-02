@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import Sidebar from './SideBar';
-import '../CSS Styles/SearchResults.css';
+import '../CSS-Styles/SearchResults.css';
 
 const SearchResults = () => {
     const [products, setProducts] = useState([]); // Todos los productos

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import "../CSS Styles/ProductList.css";
+import "../CSS-Styles/ProductList.css";
 import Sidebar from "./SideBar";
 
 const ProductList = () => {

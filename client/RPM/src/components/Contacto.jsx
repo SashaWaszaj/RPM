@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StoreInfoSideBar from "./StoreInfoSideBar";
-import "../CSS Styles/StoreInfo.css";
+import "../CSS-Styles/StoreInfo.css";
 
 const Contacto = () => {
   // Estados para los campos del formulario

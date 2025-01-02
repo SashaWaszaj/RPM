@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
-import '../CSS Styles/EditProduct.css';
+import '../CSS-Styles/EditProduct.css';
 
 const EditProduct = () => {
     const [product, setProduct] = useState({

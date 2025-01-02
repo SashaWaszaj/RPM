@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import React from 'react';
-import '../CSS Styles/Menu.css';
+import '../CSS-Styles/Menu.css';
 import MessagesSideBar from "./MessagesSideBar";
 
 

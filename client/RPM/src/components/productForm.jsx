@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Axios from 'axios';
-import '../CSS Styles/productForm.css';
+import '../CSS-Styles/productForm.css';
 
 const ProductForm = () => {
     const [product, setProduct] = useState({

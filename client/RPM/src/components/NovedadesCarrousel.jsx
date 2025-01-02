@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import "../CSS Styles/ProductList.css"; // Reutiliza los estilos de ProductList
-import "../CSS Styles/NovedadesCarrousel.css";
+import "../CSS-Styles/ProductList.css"; // Reutiliza los estilos de ProductList
+import "../CSS-Styles/NovedadesCarrousel.css";
 
 const NovedadesCarrousel = () => {
   const [latestProducts, setLatestProducts] = useState([]);
