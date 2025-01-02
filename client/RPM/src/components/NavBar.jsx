@@ -8,7 +8,94 @@ import logo from '../img/RPM.png';
 const NavBar = ({ setSelectedCategory }) => {
     const [query, setQuery] = useState("");
     const navigate = useNavigate();
+    const [menuOpen, setMenuOpen] = useState(false); // Estado para el menú
+    const [openDropdown, setOpenDropdown] = useState({});
 
+    const handleMenuToggle = () => {
+        setMenuOpen(!menuOpen); // Cambia el estado del menú
+    };
+
+    const toggleDropdown = (category) => {
+        setOpenDropdown((prev) => ({
+          ...prev,
+          [category]: !prev[category],
+        }));
+      };
+    
+      const categories = {
+        Motor: [
+          "Pistones",
+          "Cilindros",
+          "Juntas",
+          "Cigüeñal",
+          "Bielas",
+          "Cadenas-de-distribución",
+        ],
+        Transmision: [
+          "Cajas-de-cambio",
+          "Embragues",
+          "Cadenas-y-Correas",
+          "Piñones",
+          "Ejes-de-transmisión",
+          "Poleas",
+          "Rodamientos",
+          "Transmision-varios",
+        ],
+        "Suspension y Direccion": [
+          "Amortiguadores",
+          "Horquillas",
+          "Resortes",
+          "Manillares",
+          "Rodamientos-de-dirección",
+          "Suspension-y-direccion-varios",
+        ],
+        Frenos: [
+          "Pastillas-de-freno",
+          "Discos-de-freno",
+          "Cilindros-maestros",
+          "Zapatas",
+          "Accesorios-de-freno",
+        ],
+        "Ruedas y Neumaticos": [
+          "Neumáticos",
+          "Llantas",
+          "Cámaras-de-aire",
+          "Válvulas",
+          "Rayos-y-Niples",
+          "Accesorios-de-rueda",
+        ],
+        Escape: ["Silenciadores", "Colectores", "Tuberías", "Escape-varios"],
+        Carroserias: [
+          "Carcasas",
+          "Guardabarros",
+          "Tanques-de-gasolina",
+          "Cubiertas-laterales",
+          "Baúles",
+          "Asientos",
+          "Cascos",
+          "Accesorios-varios",
+        ],
+        "Iluminacion y Electronica": [
+          "Baterías",
+          "Alarmas",
+          "GPS",
+          "Faros",
+          "Luces-traseras",
+          "Intermitentes",
+          "Luces-LED",
+          "Iluminacion-varios",
+          "Electronica-varios",
+        ],
+        Otros: [
+          "Herramientas",
+          "Lubricantes-y-aceites",
+          "Limpieza",
+          "Filtros",
+          "Kits-de-reparación",
+          "Bicicletas",
+        ],
+      };
+    
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
         navigate(`/product/${category}`);
@@ -26,19 +113,26 @@ const NavBar = ({ setSelectedCategory }) => {
         }
     };
 
+    const whatsappLinkMayorista = `https://wa.me/595985172178?text=${encodeURIComponent(
+         "Hola, quiero más información sobre sus precios mayoristas."
+      )}`;
+      const whatsappLink = `https://wa.me/595985172178?text=${encodeURIComponent(
+        "Hola, quiero más información."
+     )}`;
+
     return (
         <header className='header'>
             <div className='top-header'>
                 <div>
                     <ul className='information-list'>
-                        <li className='information-list-item'><a><i class="fa fa-whatsapp" aria-hidden="true"></i>+595 985 172178</a></li>
-                        <li className='information-list-item'><Link to='/ubicacion'><i className="fa fa-map-marker" aria-hidden="true"></i>Ubicacion</Link></li>
-                        <li className='information-list-item'><Link to='/contacto'><i className="fa fa-envelope" aria-hidden="true"></i>Contacto</Link></li>
-                        <li className='information-list-item'><Link to='/la-empresa'><i className="fa fa-home" aria-hidden="true"></i>La empresa</Link></li>
+                        <li className='information-list-item'><a href={whatsappLink} target="_blank" ><i className="fa fa-whatsapp" aria-hidden="true"></i><span className='info-links-text'>+595 985 172178</span></a></li>
+                        <li className='information-list-item'><Link to='/ubicacion'><i className="fa fa-map-marker" aria-hidden="true"></i><span className='info-links-text'>Ubicación</span></Link></li>
+                        <li className='information-list-item'><Link to='/contacto'><i className="fa fa-envelope" aria-hidden="true"></i><span className='info-links-text'>Contacto</span></Link></li>
+                        <li className='information-list-item'><Link to='/la-empresa'><i className="fa fa-home" aria-hidden="true"></i><span className='info-links-text'>La empresa</span></Link></li>
                     </ul>
                 </div>
                 <div className='consulta-precio-mayorista'>
-                    <p><a>Consulta nuestros <span style={{fontWeight: "bold"}}>precios mayoristas</span></a></p>
+                    <p><a href={whatsappLinkMayorista} target="_blank" >Consulta nuestros <span style={{fontWeight: "bold"}}>precios mayoristas</span></a></p>
                 </div>
             </div>
             <div className='bar-principal'>
@@ -89,7 +183,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Suspensión y Direccion <span className='simbolito'> ⌵</span></a></li>
+                        <li><a className="category-box">Suspensión y Dirección <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Amortiguadores")}>Amortiguadores</a>
                                 <a onClick={() => handleCategoryClick("Horquillas")}>Horquillas</a>
@@ -143,7 +237,7 @@ const NavBar = ({ setSelectedCategory }) => {
                             </div>
                     </div>
                     <div className='dropdown'>
-                        <li><a className="category-box">Iluminación y electrónica <span className='simbolito'> ⌵</span></a></li>
+                        <li><a className="category-box">Iluminación y Electrónica <span className='simbolito'> ⌵</span></a></li>
                             <div className="dropdown-content">
                                 <a onClick={() => handleCategoryClick("Baterías")}>Baterías</a>
                                 <a onClick={() => handleCategoryClick("Alarmas")}>Alarmas</a>
@@ -169,6 +263,43 @@ const NavBar = ({ setSelectedCategory }) => {
                     </div>
                 </ul>
             </div>
+            <div className='categories'>
+                <button 
+                  className="menu-toggle" 
+                  onClick={handleMenuToggle}>
+                  ☰ Categorías
+                </button>
+                    <ul className={menuOpen ? "active" : ""}>
+                    {Object.entries(categories).map(([category, items]) => (
+                        <div className="dropdown-container-navbar" key={category}>
+                            <li className="category-title">
+                            <button
+                                className="dropdown-btn"
+                                onClick={() => toggleDropdown(category)}
+                            >
+                                {category} ⌵
+                            </button>
+                            </li>
+                            <div
+                            className="dropdown-content-sidebar"
+                            style={{
+                                display: openDropdown[category] ? "flex" : "none",
+                            }}
+                            >
+                            {items.map((item) => (
+                                <a
+                                key={item}
+                                onClick={() => handleCategoryClick(item)}
+                                style={{ cursor: "pointer" }}
+                                >
+                                {item}
+                                </a>
+                            ))}
+                            </div>
+                        </div>
+                        ))}
+                    </ul>
+                </div>
         </header>
     );
 };

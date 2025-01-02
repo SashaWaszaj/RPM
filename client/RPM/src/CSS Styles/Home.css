@@ -9,3 +9,12 @@
     border: none;
     border-radius: 0;
 }
+
+@media (max-width: 768px) {
+    .carousel-container{
+        width: 100%;
+    }
+    .carousel-image{
+        width: 100%;
+    }
+}

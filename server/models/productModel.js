@@ -26,7 +26,7 @@ const productSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please select a category.']
     }
-});
+}, { timestamps: true });
 
 const Product = mongoose.model('Product', productSchema);
 

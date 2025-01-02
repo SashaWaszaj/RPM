@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import React from 'react';
 import '../CSS Styles/Menu.css';
+import MessagesSideBar from "./MessagesSideBar";
 
 
 const Menu = () => {
@@ -25,14 +26,17 @@ const Menu = () => {
 
 
     return(
-        <>
+        <div className="menu-container">
+            <div>
+                <MessagesSideBar></MessagesSideBar>
+            </div>
             <div className="link-menu">
                 <Link to="/productForm" className="link"> Agregar Producto</Link>
                 <Link to="/editProduct" className="link"> Editar o eliminar un producto</Link>
                 <Link to="/register" className="link"> Crear usuario</Link>
                 <button onClick={handleLogout}>Cerrar sesión</button>
            </div>
-        </>
+        </div>
     )
 }
 

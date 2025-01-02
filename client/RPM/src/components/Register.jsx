@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import '../CSS Styles/Login.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +21,8 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const isConfirmed = window.confirm("¿Estás seguro que deseas crear un nuevo usuario?");
+    if(isConfirmed){
     try {
       const response = await axios.post('http://localhost:8080/api/auth/register', formData);
       console.log(response.data);
@@ -31,14 +33,14 @@ const Register = () => {
       setError(error.response.data.mensaje);
     }
   };
-
+}
   const handleCancel = () => {
     navigate("/menu");
 };
 
   
   return (
-    <div className="form-container">
+    <div className="form-container-login">
       <form onSubmit={handleSubmit}>
         <h2 className="titulo">Crear usuario</h2>
         <div>

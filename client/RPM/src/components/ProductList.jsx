@@ -14,8 +14,14 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await Axios.get("http://localhost:8080/product");
-        setProducts(response.data);
+        const response = await Axios.get("http://localhost:8080/product/");
+
+        // Ordenar productos por fecha de creación en orden descendente
+      const sortedProducts = response.data.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+
+        setProducts(sortedProducts);
       } catch (error) {
         console.error("Error al cargar productos:", error);
       }
@@ -77,7 +83,7 @@ const ProductList = () => {
                     <div>
                       <img
                         src={`http://localhost:8080/${product.image}`}
-                        alt="Producto"
+                        alt={product.name}
                         style={{ maxWidth: "200px", maxHeight: "200px" }}
                       />
                     </div>

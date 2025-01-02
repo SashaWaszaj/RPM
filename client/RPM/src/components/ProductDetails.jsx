@@ -24,6 +24,7 @@ const ProductDetails = () => {
         }
     }, [code]);
 
+
     return (
         <div className="product-details-container">
             {error && <div className="error-message">{error}</div>}
@@ -36,10 +37,22 @@ const ProductDetails = () => {
                         <div className="Product-information-bar">
                             <h3>{product.name}</h3>
                             <p className="sku-section">SKU: <span className="SKU-content">{product.code}</span></p>
-                            <p>Marca: <span>{product.brand}</span></p>
-                            <p>Categoría: <span>{product.category}</span></p>
+                            <p>Marca: <span style={{ fontWeight:"bold"}}>{product.brand}</span></p>
+                            <p>Categoría: <span style={{ fontWeight:"bold"}} >{product.category}</span></p>
                             <p className="warning">* Precio y Stock sujeto a disponibilidad.</p>
-                            <button> <i className="fa fa-whatsapp" aria-hidden="true"></i> Consultar por Whatsapp</button>
+                            {product && (
+                             
+                                    <a 
+                                        href={`https://api.whatsapp.com/send?phone=595985172178&text=${encodeURIComponent(
+                                                `Hola, quiero más información sobre ${product.name}.`
+                                        )}`} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                    >
+                                        <i className="fa fa-whatsapp" aria-hidden="true"></i> Consultar por Whatsapp
+                                    </a>
+                               
+                            )}
                         </div>
                     </div>
                     <div className="description">

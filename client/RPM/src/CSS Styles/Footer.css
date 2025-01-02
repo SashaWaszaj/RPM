@@ -23,7 +23,7 @@
 .top-container-info-social {
   display: flex;
   justify-content: space-between;
-  gap: 20px; /* Espacio entre las columnas */
+  gap: 50px; /* Espacio entre las columnas */
 }
 
 .footer-section-info,
@@ -72,6 +72,7 @@
   .footer-section-info,
   .footer-section {
     text-align: center;
+    margin: auto;
   }
 }
 

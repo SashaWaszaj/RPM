@@ -4,6 +4,9 @@ body {
   font-family: 'Trebuchet MS', sans-serif;
   background-color: #f8f9fa;
 }
+.dropdown-container-navbar{
+  display: none;
+}
 
 header {
   width: 100%;
@@ -27,6 +30,7 @@ header {
   margin: 0 10px;
   color: #343a40;
   cursor: pointer;
+  text-decoration: none;
 }
 .information-list-item a:hover{
   color:#6a7178;
@@ -43,13 +47,17 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-.consulta-precio-mayorista p{
+.consulta-precio-mayorista p a{
   margin: 3px;
   background-color: #cf8927;
   padding: 3px 10px;
   border-radius: 15px;
   margin-left: 150px;
   color: #f1f1f1;
+  text-decoration: none;
+}
+.consulta-precio-mayorista p {
+  margin: 8px 0;
 }
 .consulta-precio-mayorista p a:hover{
   cursor: pointer;
@@ -60,17 +68,17 @@ header {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  justify-content: center;
+  justify-content: space-around;
   margin-bottom: 0;
   height: 120px;
+
 }
 .div-logo{
   margin: 0;
 }
 .logo {
   border: none;
-  margin-left: 100px;
-  margin-right: 20px;
+  margin: 0;
   height: 120px;
 }
 
@@ -177,24 +185,120 @@ form .search-button[type="submit"]:hover {
   padding-left: 4px;
 }
 
-/* Respuesta para dispositivos pequeños */
+/* Estilos generales para pantallas pequeñas */
 @media (max-width: 768px) {
-  .bar-principal {
-      flex-direction: column;
-      align-items: flex-start;
+  .top-header, .categories {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .bar-principal{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 ;
   }
 
-  .search-container {
-      margin-top: 10px;
+  .info-links-text{
+    display: none;
+  }
+
+
+  .information-list {
+    flex-direction: row;
+    margin: 0;
+  }
+
+  .consulta-precio-mayorista p a {
+    margin-left: 0;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .search-container form{
+    width: 90%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  form .search-input[type="text"] {
+    width: 100%;
+  }
+  .search-button[type="submit"]{
+    width: 20%;
+    margin-bottom: 15px;
   }
 
   .categories ul {
-      flex-direction: column;
-      align-items: flex-start;
+    display: none; /* Oculta inicialmente las categorías */
+    flex-direction: column;
+    width: 100%;
   }
 
-  .categories li {
-      margin: 5px 0;
+  .categories ul.active {
+    display: flex; /* Muestra las categorías al activarlas */
+  }
+
+  .category-box {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .dropdown .dropdown-content {
+    position: static; /* Hace que el menú desplegable ocupe el ancho completo */
+    box-shadow: none;
+  }
+
+  .dropdown-content a {
+    display: block;
+    text-align: center;
+  }
+  .dropdown-content-sidebar{
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    margin-bottom: 0;
+  }
+  .dropdown-content-sidebar a{
+    padding: 3px 0;
+  }
+  .dropdown-container-navbar{
+    display: contents;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .category-title .dropdown-btn{
+    color: white;
+    padding-left: 10px;
+  }
+  .category-title .dropdown-btn:hover{
+    color: white;
+  }
+}
+
+.menu-toggle{
+  border-radius: 0;
+  display: none;
+  background-color: #e19a37;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.menu-toggle:hover {
+  background-color: #cf8927;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    margin: 10px 0;
   }
 }
 

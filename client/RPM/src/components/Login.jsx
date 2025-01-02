@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; 
+import { useState } from "react"; 
 import { useNavigate } from 'react-router-dom';
 import Axios from "axios";
 import '../CSS Styles/Login.css';
@@ -38,18 +38,20 @@ const Login = () => {
 
       navigate("/menu");
     } catch (error) {
-      // Manejamos el error y mostramos un mensaje al usuario
-      setError("Error al iniciar sesión. Verifica tus credenciales.");
-      console.error("Login error:", error);
-    }
+      if (error.response && error.response.data.message) {
+          setError(error.response.data.message);
+      } else {
+          setError('Ocurrio un error inesperado.');
+      }
+  }
   };
 
-  useEffect(() => {
-    console.log({ userName, password });
-  }, [userName, password]);
+  // useEffect(() => {
+  //   console.log({ userName, password });
+  // }, [userName, password]);
 
   return (
-    <div className="form-container">
+    <div className="form-container-login">
       <form onSubmit={handleSubmit}>
         <h2 className="titulo">Iniciar Sesion</h2>
         <div>

@@ -67,7 +67,7 @@
 }
 
 /* WhatsApp button styling */
-.Product-information-bar button {
+.Product-information-bar a{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -79,10 +79,14 @@
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
+  text-decoration: none;
+
 }
 
-.Product-information-bar button:hover {
+.Product-information-bar a:hover {
   background-color: #1da851;
+  border: none;
+  color: aliceblue;
 }
 
 /* Description section */

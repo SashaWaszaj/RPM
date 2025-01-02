@@ -98,7 +98,8 @@ const EditProduct = () => {
         e.preventDefault();
         setError(null);
         setSuccess(null);
-    
+        const isConfirmed = window.confirm("¿Estás seguro que deseas editar este producto?");
+        if(isConfirmed){
         try {
             const formData = new FormData();
             formData.append('code', product.code); // Añadir código del producto
@@ -148,7 +149,7 @@ const EditProduct = () => {
             }
         } catch (error) {
             setError(error.response?.data?.message || 'Ocurrió un error inesperado.');
-        }
+        }}
     };    
     
     
@@ -197,12 +198,11 @@ const EditProduct = () => {
                     setPreviewImage(null);  // Limpiar la previsualización de la imagen
                 }
             } catch (error) {
-                console.error("Error al eliminar el producto:", error);
-                setError("Error al eliminar el producto. Por favor, intenta nuevamente.");
-            }
-        } else {
-            console.log("Eliminación cancelada.");
-        }
+                if (error.response && error.response.data.message) {
+                    setError(error.response.data.message);
+                } else {
+                    setError('Ocurrio un error inesperado.');
+                }}}
     };
     
     // Manejar cancelación
@@ -227,7 +227,7 @@ const EditProduct = () => {
                         onChange={handleChange}
                         required
                     />
-                    <button type="button" onClick={handleSearchProductByCode}>Buscar producto</button>
+                    <button className='edit-button' type="button" onClick={handleSearchProductByCode}>Buscar producto</button>
                 </div>
 
                 {/* Mostrar los campos de edición solo si el producto está cargado */}

@@ -14,6 +14,7 @@ import rcx from '../uploads/rcx.jpg';
 import riffel from '../uploads/Riffel.jpg';
 import rinaldi from '../uploads/Rinaldi.jpg';
 import shiro from '../uploads/shiro.png';
+import '../CSS Styles/BrandsCarrousel.css';
 
 function BrandsCarrousel() {
   let sliderRef = useRef(null);
@@ -43,7 +44,7 @@ function BrandsCarrousel() {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -51,44 +52,44 @@ function BrandsCarrousel() {
     prevArrow: <SamplePrevArrow />
   };
   return (
-    <div className="slider-container" style={{backgroundColor: 'white', padding: '40px 0', margin: '0 100px'}}>
-      <h2 style={{textAlign: 'center', fontSize: 'xxx-large'}}>Marcas</h2>
+    <div className="slider-container">
+      <h2 style={{textAlign: 'center', fontSize: 'xx-large'}}>Marcas</h2>
       <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
             <div>
-            <img src={gulf} alt="Gulf" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={gulf} alt="Gulf" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={kenda} alt="Kenda" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={kenda} alt="Kenda" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={km} alt="KM" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={km} alt="KM" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={mmg} alt="MMG" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={mmg} alt="MMG" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={myk} alt="MYK" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={myk} alt="MYK" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={ngk} alt="NGK" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={ngk} alt="NGK" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={narva} alt="Narva" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={narva} alt="Narva" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={protork} alt="Protork" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={protork} alt="Protork" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={rcx} alt="RCX" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={rcx} alt="RCX" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={riffel} alt="Riffel" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={riffel} alt="Riffel" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={rinaldi} alt="Rinaldi" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={rinaldi} alt="Rinaldi" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
             <div>
-            <img src={shiro} alt="Shiro" style={{ width: "auto", height: "150px", border: 'none' }} />
+            <img src={shiro} alt="Shiro" style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
       </Slider>
     </div>

@@ -26,7 +26,7 @@ const LaEmpresa = () => {
 
             <p className="parrafo-la-empresa-3">Hoy en día, continuamos trabajando con la misma pasión y compromiso que nos impulsaron desde 
               el principio, manteniendo el objetivo de superar las expectativas de nuestros clientes y fortalecer 
-              nuestra presencia en el mercado global.</p>
+              nuestra presencia en el mercado.</p>
         </div>
       </div>
     </div>

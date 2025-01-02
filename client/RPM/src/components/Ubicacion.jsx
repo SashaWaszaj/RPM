@@ -4,7 +4,7 @@ import "../CSS Styles/StoreInfo.css";
 import Map from "./Maps";
 
 const Ubicacion = () => {
-
+  
   return (
     <div className="StoreInfo-main-container">
       <div>
@@ -12,11 +12,11 @@ const Ubicacion = () => {
       </div>
       <div>
         <h2>Venga A Visitarnos</h2>
-        <div className="info-box-2">
+        <div className="info-box-3">
           <div className="info-box-ubicacion">
               <div className="ubicacion">
                   <h4><i className="fa fa-map-marker" aria-hidden="true"></i>CASA CENTRAL</h4>
-                  <p>Calle Coronel Bogado casi costanera 6000 Encarnacion, Paraguay</p>
+                  <p>Calle Coronel Bogado Casi Costanera 6000 Encarnacion, Paraguay</p>
               </div>
               <div>
                 <Map/>

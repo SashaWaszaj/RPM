@@ -113,7 +113,7 @@ const ProductForm = () => {
             if (error.response && error.response.data.message) {
                 setError(error.response.data.message);
             } else {
-                setError('An unexpected error occurred.');
+                setError('Ocurrio un error inesperado.');
             }
         }
     };
@@ -156,7 +156,7 @@ const ProductForm = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="brand">Marca:</label>
+                    <label htmlFor="brand">Marca (opcional):</label>
                     <input 
                         type="text"
                         id="brand"

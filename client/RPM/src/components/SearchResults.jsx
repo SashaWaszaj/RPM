@@ -6,9 +6,12 @@ import Sidebar from './SideBar';
 import '../CSS Styles/SearchResults.css';
 
 const SearchResults = () => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]); // Todos los productos
+    const [currentPage, setCurrentPage] = useState(1); // Página actual
     const location = useLocation();
     const query = new URLSearchParams(location.search).get('query'); // Obtén el término de búsqueda
+
+    const productsPerPage = 36; // Productos por página
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -25,33 +28,79 @@ const SearchResults = () => {
         }
     }, [query]);
 
+    // Calcular índices para productos visibles
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    // Calcular el número total de páginas
+    const totalPages = Math.ceil(products.length / productsPerPage);
+
+    // Manejar cambio de página
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     return (
-        <div className='Search-results-main-container'>
-            <div>
+        <div className="Search-results-main-container">
             <Sidebar products={products} />
-            </div>
-            <div className='search-results-container'>
-            <h2>Resultados de búsqueda para "{query}"</h2>
-                    <div className="product-list">
-                        {products.length > 0 ? (
-                            products.map((product) => (
+
+            <div className="search-results-container">
+                <h2>Resultados de búsqueda para "{query}"</h2>
+
+                {/* Mostrar rango de resultados y total */}
+                <div className="results-summary">
+                    {products.length > 0 && (
+                        <p>
+                            Mostrando {indexOfFirstProduct + 1}–{Math.min(indexOfLastProduct, products.length)} de {products.length} resultados
+                        </p>
+                    )}
+                </div>
+
+                <div className="product-list">
+                    {currentProducts.length > 0 ? (
+                        currentProducts.map((product) => (
                             <div key={product._id} className="product-item">
-                                <Link to={`/${product.code}`} className='link'>  
-                                    {product && product.image && (
-                                <div>
-                                    <img src={`http://localhost:8080/${product.image}`} alt="Producto" style={{ maxWidth: '200px', maxHeight: '200px' }}/>
-                                </div>
-                                )} </Link>
-                                <Link to={`/${product.code}`} className='link'><h3>{product.name}</h3></Link>
+                                <Link to={`/${product.code}`} className="link">
+                                    {product.image && (
+                                        <img
+                                            src={`http://localhost:8080/${product.image}`}
+                                            alt={product.name}
+                                            style={{ maxWidth: '200px', maxHeight: '200px' }}
+                                        />
+                                    )}
+                                </Link>
+                                <Link to={`/${product.code}`} className="link">
+                                    <h3>{product.name}</h3>
+                                </Link>
                             </div>
-                            ))
-                            ) : (
-                            <p className='titulo-subtitulo-product-list'>No hay resultados para "{query}"</p>
+                        ))
+                    ) : (
+                        <p className="titulo-subtitulo-product-list">No hay resultados para "{query}"</p>
+                    )}
+                </div>
+
+                {/* Navegación de paginación */}
+                {totalPages > 1 && (
+                    <div className="pagination">
+                        {Array.from({ length: totalPages }, (_, index) => (
+                            <button
+                                key={index + 1}
+                                onClick={() => handlePageChange(index + 1)}
+                                className={`page-button ${
+                                    currentPage === index + 1 ? 'active' : ''
+                                }`}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                    </div>
                 )}
-            </div>
             </div>
         </div>
     );
 };
 
 export default SearchResults;
+
+

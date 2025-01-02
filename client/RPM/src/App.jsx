@@ -17,6 +17,7 @@ import Footer from './components/Footer';
 import LaEmpresa from './components/LaEmpresa';
 import Contacto from './components/Contacto';
 import Ubicacion from './components/Ubicacion';
+import WhatsAppBubble from './components/WhatsappBubble';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -67,6 +68,10 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar setSelectedCategory={setSelectedCategory} />
+      <WhatsAppBubble 
+        phoneNumber="595985172178" 
+        message="Hola, estoy interesado en sus productos." 
+      />
       <Routes>
         {/* Rutas públicas */}
         <Route path="/" element={<Home />} />
