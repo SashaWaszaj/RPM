@@ -13,7 +13,7 @@ const port = 8080;
 
 // Configurar CORS
 const corsOptions = {
-    origin: 'http://localhost:5173', // Permitir solo solicitudes desde el frontend
+  origin: ['http://localhost:5173', 'https://rpm-motos.com'], // Permitir solo solicitudes desde el frontend
     methods: 'GET,POST,PUT,DELETE',
   };
   app.use(cors(corsOptions));
