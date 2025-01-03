@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await Axios.get("http://localhost:8080/product/");
+        const response = await Axios.get("https://rpm-oi7i.onrender.com/product/");
         setProducts(response.data);
       } catch (error) {
         console.error("Error al cargar productos:", error);

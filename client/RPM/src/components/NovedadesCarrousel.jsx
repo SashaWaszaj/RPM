@@ -10,7 +10,7 @@ const NovedadesCarrousel = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await Axios.get("http://localhost:8080/product/");
+        const response = await Axios.get("https://rpm-oi7i.onrender.com/product/");
 
         // Ordenar productos por fecha de creación descendente y tomar los últimos 10
         const sortedProducts = response.data.sort(
@@ -35,7 +35,7 @@ const NovedadesCarrousel = () => {
               {product.image && (
                 <div>
                   <img
-                    src={`http://localhost:8080/${product.image}`}
+                    src={`https://rpm-oi7i.onrender.com/${product.image}`}
                     alt={product.name}
                     className="product-item-img"
                   />

@@ -70,7 +70,7 @@ const EditProduct = () => {
         setError(null);
         setSuccess(null);
         try {
-            const response = await Axios.get(`http://localhost:8080/product/code/${product.code}`);
+            const response = await Axios.get(`https://rpm-oi7i.onrender.com/product/code/${product.code}`);
             setProduct({
                 code: response.data.code,
                 name: response.data.name,
@@ -80,7 +80,7 @@ const EditProduct = () => {
                 image: response.data.image,
             });
             
-            const imageUrl = `http://localhost:8080/${response.data.image}`;
+            const imageUrl = `https://rpm-oi7i.onrender.com/${response.data.image}`;
             setPreviewImage(imageUrl);  // Establecer la URL de la imagen en el estado
     
             // Log después de actualizar el estado
@@ -119,16 +119,16 @@ const EditProduct = () => {
                 'Content-Type': 'multipart/form-data',
             };
     
-            let response = await Axios.put(`http://localhost:8080/product/code/${product.code}/edit`, formData, { headers });
+            let response = await Axios.put(`https://rpm-oi7i.onrender.com/product/code/${product.code}/edit`, formData, { headers });
 
             if (response.status === 401) {
-                const refreshResponse = await Axios.post('http://localhost:8080/api/auth/refreshToken', { refreshToken });
+                const refreshResponse = await Axios.post('https://rpm-oi7i.onrender.com/api/auth/refreshToken', { refreshToken });
                 const newToken = refreshResponse.data.accessToken;
     
                 localStorage.setItem('accessToken', newToken);
                 headers['Authorization'] = `Bearer ${newToken}`;
     
-                response = await Axios.put(`http://localhost:8080/product/code/${product.code}/edit`, formData, { headers });
+                response = await Axios.put(`https://rpm-oi7i.onrender.com/product/code/${product.code}/edit`, formData, { headers });
             }
     
             if (response.status === 200) {
@@ -167,11 +167,11 @@ const EditProduct = () => {
                 };
         
                 // Intenta eliminar el producto
-                let response = await Axios.delete(`http://localhost:8080/product/delete/${product.code}`, { headers });
+                let response = await Axios.delete(`https://rpm-oi7i.onrender.com/product/delete/${product.code}`, { headers });
         
                 // Si el token expira, realiza un refresh y reintenta
                 if (response.status === 401) {
-                    const refreshResponse = await Axios.post('http://localhost:8080/api/auth/refreshToken', { refreshToken });
+                    const refreshResponse = await Axios.post('https://rpm-oi7i.onrender.com/api/auth/refreshToken', { refreshToken });
                     const newToken = refreshResponse.data.accessToken;
         
                     // Actualiza el token en localStorage y en los headers
@@ -179,7 +179,7 @@ const EditProduct = () => {
                     headers['Authorization'] = `Bearer ${newToken}`;
         
                     // Reintenta la eliminación con el nuevo token
-                    response = await Axios.delete(`http://localhost:8080/product/delete/${product.code}`, { headers });
+                    response = await Axios.delete(`https://rpm-oi7i.onrender.com/product/delete/${product.code}`, { headers });
                 }
         
                 // Verifica si la eliminación fue exitosa

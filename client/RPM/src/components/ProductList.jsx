@@ -14,7 +14,7 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await Axios.get("http://localhost:8080/product/");
+        const response = await Axios.get("https://rpm-oi7i.onrender.com/product/");
 
         // Ordenar productos por fecha de creación en orden descendente
       const sortedProducts = response.data.sort(
@@ -82,7 +82,7 @@ const ProductList = () => {
                   {product && product.image && (
                     <div>
                       <img
-                        src={`http://localhost:8080/${product.image}`}
+                        src={`https://rpm-oi7i.onrender.com/${product.image}`}
                         alt={product.name}
                         style={{ maxWidth: "200px", maxHeight: "200px" }}
                       />

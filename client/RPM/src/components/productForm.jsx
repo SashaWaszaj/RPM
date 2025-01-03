@@ -81,7 +81,7 @@ const ProductForm = () => {
                 'Content-Type': 'multipart/form-data',
             };
     
-            let response = await Axios.post('http://localhost:8080/product/new', formData, { headers });
+            let response = await Axios.post('https://rpm-oi7i.onrender.com/product/new', formData, { headers });
     
             if (response.status === 401) {
                 const refreshResponse = await Axios.post('http://localhost:8080/api/auth/refreshToken', { refreshToken });
@@ -90,7 +90,7 @@ const ProductForm = () => {
                 localStorage.setItem('accessToken', newToken);
                 headers['Authorization'] = `Bearer ${newToken}`;
     
-                response = await Axios.post('http://localhost:8080/product/new', formData, { headers });
+                response = await Axios.post('https://rpm-oi7i.onrender.com/product/new', formData, { headers });
             }
     
             if (response.status === 201) {

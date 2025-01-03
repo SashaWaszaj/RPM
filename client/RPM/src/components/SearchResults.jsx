@@ -16,7 +16,7 @@ const SearchResults = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await Axios.get(`http://localhost:8080/product/search?query=${query}`);
+                const response = await Axios.get(`https://rpm-oi7i.onrender.com/product/search?query=${query}`);
                 setProducts(response.data);
             } catch (error) {
                 console.error("Error fetching products:", error);
@@ -64,7 +64,7 @@ const SearchResults = () => {
                                 <Link to={`/${product.code}`} className="link">
                                     {product.image && (
                                         <img
-                                            src={`http://localhost:8080/${product.image}`}
+                                            src={`https://rpm-oi7i.onrender.com/${product.image}`}
                                             alt={product.name}
                                             style={{ maxWidth: '200px', maxHeight: '200px' }}
                                         />

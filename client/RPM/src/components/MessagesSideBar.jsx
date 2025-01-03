@@ -10,7 +10,7 @@ const MessagesSideBar = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await Axios.get("http://localhost:8080/contact/messages");
+        const response = await Axios.get("https://rpm-oi7i.onrender.com/contact/messages");
         const sortedMessages = response.data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
@@ -32,7 +32,7 @@ const MessagesSideBar = () => {
 
     if (isConfirmed) {
       try {
-        const response = await Axios.delete(`http://localhost:8080/contact/delete/${id}`);
+        const response = await Axios.delete(`https://rpm-oi7i.onrender.com/contact/delete/${id}`);
         if (response.status === 204) {
           // Actualizar la lista de mensajes después de eliminar
           setMessages((prevMessages) => prevMessages.filter((message) => message._id !== id));

@@ -12,7 +12,7 @@ const ProductDetails = () => {
         if (code) {
             const getProduct = async () => {
                 try {
-                    const URL = `http://localhost:8080/product/code/${code}`;
+                    const URL = `https://rpm-oi7i.onrender.com/product/code/${code}`;
                     const response = await axios.get(URL);
                     setProduct(response.data); 
                 } catch (error) {
@@ -32,7 +32,7 @@ const ProductDetails = () => {
                 <div>
                     <div className="product-container">
                         <div>
-                            <img src={`http://localhost:8080/${product.image}`} alt="Producto" />
+                            <img src={`https://rpm-oi7i.onrender.com/${product.image}`} alt="Producto" />
                         </div>
                         <div className="Product-information-bar">
                             <h3>{product.name}</h3>
