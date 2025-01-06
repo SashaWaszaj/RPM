@@ -208,6 +208,7 @@ form .search-button[type="submit"]:hover {
   .information-list {
     flex-direction: row;
     margin: 0;
+    padding-left: 0;
   }
 
   .consulta-precio-mayorista p a {
