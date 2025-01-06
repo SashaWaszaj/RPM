@@ -55,41 +55,41 @@ function BrandsCarrousel() {
     <div className="slider-container">
       <h2 style={{textAlign: 'center', fontSize: 'xx-large'}}>Marcas</h2>
       <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
-            <div>
-            <img src={gulf} alt="Gulf" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={gulf} alt="Gulf"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={kenda} alt="Kenda" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={kenda} alt="Kenda"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={km} alt="KM" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={km} alt="KM"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={mmg} alt="MMG" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={mmg} alt="MMG"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={myk} alt="MYK" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={myk} alt="MYK"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={ngk} alt="NGK" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={ngk} alt="NGK"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={narva} alt="Narva" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={narva} alt="Narva"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={protork} alt="Protork" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={protork} alt="Protork"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={rcx} alt="RCX" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={rcx} alt="RCX"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={riffel} alt="Riffel" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={riffel} alt="Riffel"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={rinaldi} alt="Rinaldi" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={rinaldi} alt="Rinaldi"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
-            <div>
-            <img src={shiro} alt="Shiro" style={{ width: "auto", height: "100px", border: 'none' }} />
+            <div className="img-carrousel">
+            <img src={shiro} alt="Shiro"  style={{ width: "auto", height: "100px", border: 'none' }} />
             </div>
       </Slider>
     </div>
