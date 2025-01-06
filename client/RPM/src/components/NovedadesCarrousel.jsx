@@ -43,6 +43,7 @@ const NovedadesCarrousel = () => {
               )}
             </Link>
             <Link to={`/${product.code}`} className="link">
+              <h4><span style={{fontWeight: "bold", color: "black"}}>SKU:</span> {product.code}</h4>
               <h3>{product.name}</h3>
             </Link>
           </div>

@@ -19,6 +19,9 @@
   .product-item {
     flex: 0 0 auto;
     width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .titulo-subtitulo-product-list-carrousel {
