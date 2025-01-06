@@ -76,10 +76,19 @@
     margin: 10px 0;
     text-decoration: none;
     transition: color 0.3s;
+    text-align: left;
+  }
+  .product-item h4{
+    color:#5a5a5a;
+    text-align: left;
+    font-size: 12px;
+    margin: 5px 0;
+    font-weight: none;
   }
   
   .product-item h3:hover {
     color: #d08c2c;
+    
   }
   
   /* Links generales */
