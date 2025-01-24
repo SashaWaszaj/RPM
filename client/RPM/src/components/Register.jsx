@@ -24,7 +24,7 @@ const Register = () => {
     const isConfirmed = window.confirm("¿Estás seguro que deseas crear un nuevo usuario?");
     if(isConfirmed){
     try {
-      const response = await axios.post('https://rpm-oi7i.onrender.com/api/auth/register', formData);
+      const response = await axios.post('https://rpm-jgtt.onrender.com/api/auth/register', formData);
       console.log(response.data);
 
       navigate("/menu");

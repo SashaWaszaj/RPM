@@ -20,7 +20,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const URL = 'https://rpm-oi7i.onrender.com/api/auth/login'; 
+    const URL = 'https://rpm-jgtt.onrender.com/api/auth/login'; 
     const config = {
       userName,
       password,

@@ -14,7 +14,7 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await Axios.get("https://rpm-oi7i.onrender.com/product/");
+        const response = await Axios.get("https://rpm-jgtt.onrender.com/product/");
 
         // Ordenar productos por fecha de creación en orden descendente
       const sortedProducts = response.data.sort(
